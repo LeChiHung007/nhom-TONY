@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio cá nhân của Vũ Thành Uy, sinh viên Công nghệ thông tin Đại học Lạc Hồng.">
+    <title>Vũ Thành Uy | Portfolio cá nhân</title>
+    <style>
+        /* ===== Thiết lập nền tảng và biến màu thương hiệu ===== */
+        :root {
+            --xanh-lhu: #0066b3;
+            --xanh-dam: #004b87;
+            --xanh-nhat: #eaf5ff;
+            --xanh-hover: #d7edff;
+            --trang: #ffffff;
+            --nen: #f5f9fd;
+            --chu: #17324d;
+            --chu-phu: #587187;
+            --vien: #cfe1ef;
+            --do-bong: 0 14px 35px rgba(0, 75, 135, 0.12);
+        }
+
+        /* ===== Quy tắc hiển thị chung ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--nen);
+            color: var(--chu);
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .khung {
+            margin: 0 auto;
+            max-width: 1160px;
+            padding: 0 24px;
+        }
+
+        .tieu-de-section {
+            color: var(--xanh-dam);
+            font-size: clamp(1.7rem, 3vw, 2.3rem);
+            margin-bottom: 12px;
+        }
+
+        .mo-ta-section {
+            color: var(--chu-phu);
+            margin-bottom: 30px;
+            max-width: 700px;
+        }
+
+        /* ===== Khối đầu trang và điều hướng chính ===== */
+        header {
+            background: linear-gradient(135deg, var(--xanh-dam), var(--xanh-lhu));
+            color: var(--trang);
+            overflow: hidden;
+        }
+
+        nav {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            min-height: 76px;
+        }
+
+        .thuong-hieu {
+            align-items: center;
+            display: flex;
+            gap: 12px;
+        }
+
+        .logo {
+            align-items: center;
+            background: var(--trang);
+            border-radius: 50%;
+            color: var(--xanh-dam);
+            display: flex;
+            font-size: 1.1rem;
+            font-weight: 800;
+            height: 46px;
+            justify-content: center;
+            letter-spacing: 1px;
+            width: 46px;
+        }
+
+        .ten-thuong-hieu {
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .menu {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .menu a {
+            border-radius: 6px;
+            font-size: 0.95rem;
+            padding: 9px 13px;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu a:hover,
+        .menu a:focus-visible {
+            background: rgba(255, 255, 255, 0.18);
+            outline: none;
+        }
+
+        /* ===== Phần giới thiệu nổi bật ===== */
+        .gioi-thieu {
+            align-items: center;
+            display: grid;
+            gap: 48px;
+            grid-template-columns: 1.25fr 0.75fr;
+            min-height: 475px;
+            padding-bottom: 62px;
+            padding-top: 55px;
+        }
+
+        .nhan-dien {
+            color: #bde2ff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+
+        .gioi-thieu h1 {
+            font-size: clamp(2.4rem, 6vw, 4.8rem);
+            line-height: 1.08;
+            margin-bottom: 18px;
+        }
+
+        .gioi-thieu h1 span {
+            color: #c7e8ff;
+        }
+
+        .gioi-thieu p {
+            color: #e5f4ff;
+            font-size: 1.1rem;
+            max-width: 650px;
+        }
+
+        .nut {
+            border: 2px solid transparent;
+            border-radius: 6px;
+            display: inline-block;
+            font-weight: 700;
+            margin-top: 26px;
+            padding: 11px 20px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .nut:hover,
+        .nut:focus-visible {
+            outline: none;
+            transform: translateY(-2px);
+        }
+
+        .nut-chinh {
+            background: var(--trang);
+            color: var(--xanh-dam);
+        }
+
+        .nut-chinh:hover,
+        .nut-chinh:focus-visible {
+            background: var(--xanh-hover);
+        }
+
+        .the-gioi-thieu {
+            background: rgba(255, 255, 255, 0.13);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .the-gioi-thieu h2 {
+            font-size: 1.25rem;
+            margin-bottom: 17px;
+        }
+
+        .the-gioi-thieu ul {
+            list-style: none;
+        }
+
+        .the-gioi-thieu li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: #e5f4ff;
+            padding: 10px 0;
+        }
+
+        .the-gioi-thieu li:last-child {
+            border-bottom: 0;
+        }
+
+        .the-gioi-thieu strong {
+            color: var(--trang);
+            display: inline-block;
+            min-width: 82px;
+        }
+
+        /* ===== Bố cục nội dung chính ===== */
+        main {
+            padding: 72px 0 20px;
+        }
+
+        main > .khung {
+            display: grid;
+            gap: 38px;
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .noi-dung-chinh section {
+            background: var(--trang);
+            border: 1px solid var(--vien);
+            border-radius: 10px;
+            box-shadow: var(--do-bong);
+            margin-bottom: 34px;
+            padding: 34px;
+            scroll-margin-top: 25px;
+        }
+
+        /* ===== Phần giới thiệu bản thân ===== */
+        .thong-tin-ca-nhan {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: 1.3fr 1fr;
+        }
+
+        .thong-tin-ca-nhan p + p {
+            margin-top: 15px;
+        }
+
+        .diem-manh {
+            background: var(--xanh-nhat);
+            border-left: 4px solid var(--xanh-lhu);
+            border-radius: 0 6px 6px 0;
+            padding: 18px;
+        }
+
+        .diem-manh h3 {
+            color: var(--xanh-dam);
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        /* ===== Phần kỹ năng ===== */
+        .luoi-ky-nang {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(2, 1fr);
+            list-style: none;
+        }
+
+        .luoi-ky-nang li {
+            background: var(--xanh-nhat);
+            border: 1px solid #d8ebfa;
+            border-radius: 7px;
+            color: var(--xanh-dam);
+            font-weight: 700;
+            padding: 15px;
+        }
+
+        .luoi-ky-nang li::before {
+            color: var(--xanh-lhu);
+            content: "✓";
+            margin-right: 9px;
+        }
+
+        /* ===== Phần dự án ===== */
+        .luoi-du-an {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* ===== Bố cục section sở thích, liên hệ và GitHub ===== */
+        .so-thich-noi-dung {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .bai-viet-so-thich,
+        .github-card {
+            background: var(--xanh-nhat);
+            border: 1px solid #d8ebfa;
+            border-radius: 8px;
+            padding: 22px;
+        }
+
+        .bai-viet-so-thich h3,
+        .github-card h3 {
+            color: var(--xanh-dam);
+            margin-bottom: 8px;
+        }
+
+        .lien-he-noi-dung {
+            align-items: start;
+            display: grid;
+            gap: 26px;
+            grid-template-columns: minmax(0, 1fr) 270px;
+        }
+
+        .lien-he-noi-dung aside {
+            position: static;
+        }
+
+        .lien-ket-noi {
+            color: var(--xanh-lhu);
+        }
+
+        .nut-lien-he {
+            background: var(--xanh-lhu);
+            color: var(--trang);
+        }
+
+        .du-an {
+            border: 1px solid var(--vien);
+            border-radius: 8px;
+            padding: 21px;
+        }
+
+        .du-an h3 {
+            color: var(--xanh-dam);
+            margin-bottom: 8px;
+        }
+
+        .du-an p {
+            color: var(--chu-phu);
+            font-size: 0.95rem;
+        }
+
+        .nhan-cong-nghe {
+            color: var(--xanh-lhu);
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+
+        /* ===== Thanh bên với thông tin liên hệ ===== */
+        aside {
+            align-self: start;
+            background: var(--trang);
+            border: 1px solid var(--vien);
+            border-top: 5px solid var(--xanh-lhu);
+            border-radius: 10px;
+            box-shadow: var(--do-bong);
+            padding: 27px;
+            position: sticky;
+            top: 20px;
+        }
+
+        aside h2 {
+            color: var(--xanh-dam);
+            font-size: 1.25rem;
+            margin-bottom: 18px;
+        }
+
+        .lien-he {
+            list-style: none;
+        }
+
+        .lien-he li {
+            border-bottom: 1px solid #e3eef6;
+            padding: 13px 0;
+        }
+
+        .lien-he li:last-child {
+            border-bottom: 0;
+        }
+
+        .lien-he strong {
+            color: var(--chu-phu);
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
+
+        .lien-he a {
+            color: var(--xanh-lhu);
+            overflow-wrap: anywhere;
+        }
+
+        .lien-he a:hover,
+        .lien-he a:focus-visible {
+            color: var(--xanh-dam);
+            text-decoration: underline;
+        }
+
+        /* ===== Chân trang ===== */
+        footer {
+            background: var(--xanh-dam);
+            color: #e3f3ff;
+            margin-top: 35px;
+            padding: 28px 0;
+            text-align: center;
+        }
+
+        footer p + p {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            opacity: 0.82;
+        }
+
+        /* ===== Điều chỉnh giao diện cho màn hình nhỏ ===== */
+        @media (max-width: 820px) {
+            .gioi-thieu,
+            .thong-tin-ca-nhan,
+            .so-thich-noi-dung,
+            .lien-he-noi-dung {
+                grid-template-columns: 1fr;
+            }
+
+            main > .khung {
+                grid-template-columns: 1fr;
+            }
+
+            aside {
+                position: static;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .khung {
+                padding: 0 17px;
+            }
+
+            nav {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 14px;
+                padding: 17px 0;
+            }
+
+            .menu {
+                flex-wrap: wrap;
+                gap: 3px;
+            }
+
+            .menu a {
+                font-size: 0.88rem;
+                padding: 7px 9px;
+            }
+
+            .gioi-thieu {
+                min-height: auto;
+                padding-bottom: 48px;
+                padding-top: 35px;
+            }
+
+            main {
+                padding-top: 40px;
+            }
+
+            .noi-dung-chinh section {
+                padding: 24px 20px;
+            }
+
+            .luoi-ky-nang,
+            .luoi-du-an,
+            .so-thich-noi-dung {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== Khối đầu trang: nhận diện cá nhân và menu điều hướng ===== -->
+    <header id="trang-chu">
+        <div class="khung">
+            <nav aria-label="Điều hướng chính">
+                <a class="thuong-hieu" href="#trang-chu" aria-label="Về đầu trang Portfolio của Vũ Thành Uy">
+                    <span class="logo" aria-hidden="true">VTU</span>
+                    <span class="ten-thuong-hieu">Vũ Thành Uy</span>
+                </a>
+                <ul class="menu">
+                    <li><a href="#trang-chu">Trang chủ</a></li>
+                    <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                    <li><a href="#so-thich">Sở thích</a></li>
+                    <li><a href="#lien-he">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <!-- ===== Khối hero: thông điệp và thông tin nhanh ===== -->
+            <div class="gioi-thieu">
+                <div>
+                    <p class="nhan-dien">Portfolio sinh viên CNTT</p>
+                    <h1>Xin chào, mình là <span>Vũ Thành Uy</span></h1>
+                    <p>Sinh viên ngành Công nghệ Thông tin tại Trường Đại học Lạc Hồng, đam mê tìm tòi và khám phá máy tính, phần cứng cùng các hệ điều hành.</p>
+                    <a class="nut nut-chinh" href="#so-thich">Khám phá sở thích</a>
+                </div>
+                <div class="the-gioi-thieu">
+                    <h2>Thông tin nhanh</h2>
+                    <ul>
+                        <li><strong>Trường</strong> Đại học Lạc Hồng</li>
+                        <li><strong>Ngành</strong> Công nghệ Thông tin</li>
+                        <li><strong>Quan tâm</strong> Máy tính và hệ điều hành</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== Nội dung chính: gồm các section và thanh thông tin bên cạnh ===== -->
+    <main>
+        <div class="khung">
+            <div class="noi-dung-chinh">
+                <!-- ===== Section giới thiệu cá nhân ===== -->
+                <section id="gioi-thieu" aria-labelledby="tieu-de-gioi-thieu">
+                    <h2 class="tieu-de-section" id="tieu-de-gioi-thieu">Giới thiệu</h2>
+                    <p class="mo-ta-section">Một vài điều về hành trình học tập và định hướng phát triển của mình.</p>
+                    <div class="thong-tin-ca-nhan">
+                        <div>
+                            <p>Mình đang theo học ngành Công nghệ thông tin tại Đại học Lạc Hồng. Trong quá trình học, mình tập trung rèn luyện tư duy giải quyết vấn đề, khả năng tự học và kỹ năng biến ý tưởng thành sản phẩm thực tế.</p>
+                            <p>Mình đặc biệt quan tâm đến phát triển giao diện web, trải nghiệm người dùng và cách viết mã nguồn dễ bảo trì.</p>
+                        </div>
+                        <div class="diem-manh">
+                            <h3>Điểm mạnh</h3>
+                            <p>Chủ động học hỏi, làm việc có trách nhiệm và luôn sẵn sàng tiếp nhận phản hồi để hoàn thiện sản phẩm.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== Section 2: Sở thích chuyên môn, dùng article làm bài viết chi tiết ===== -->
+                <section id="so-thich" aria-labelledby="tieu-de-so-thich">
+                    <h2 class="tieu-de-section" id="tieu-de-so-thich">Sở thích chuyên môn</h2>
+                    <p class="mo-ta-section">Những chủ đề công nghệ mình thường tìm hiểu và khám phá trong thời gian rảnh.</p>
+                    <div class="so-thich-noi-dung">
+                        <!-- Thẻ article đại diện cho một nội dung sở thích độc lập -->
+                        <article class="bai-viet-so-thich">
+                            <h3>Máy tính và phần cứng</h3>
+                            <p>Mình yêu thích tìm hiểu cách máy tính vận hành, cách lựa chọn linh kiện và sự phối hợp giữa CPU, RAM, ổ lưu trữ cùng các thiết bị ngoại vi.</p>
+                        </article>
+                        <!-- Thẻ article thứ hai làm nổi bật sở thích về hệ điều hành -->
+                        <article class="bai-viet-so-thich">
+                            <h3>Phần mềm và hệ điều hành</h3>
+                            <p>Mình thường khám phá phần mềm mới và tìm hiểu các hệ điều hành (OS), từ cách cài đặt, cấu hình đến tối ưu trải nghiệm sử dụng.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- ===== Section 3: Thông tin liên hệ, kèm aside là ghi chú bên lề ===== -->
+                <section id="lien-he" aria-labelledby="tieu-de-lien-he">
+                    <h2 class="tieu-de-section" id="tieu-de-lien-he">Thông tin liên hệ</h2>
+                    <p class="mo-ta-section">Bạn có thể liên hệ với mình qua địa chỉ Gmail bên dưới.</p>
+                    <div class="lien-he-noi-dung">
+                        <div>
+                            <p><strong>Gmail:</strong> <a class="lien-ket-noi" href="mailto:uy392007@gmail.com">uy392007@gmail.com</a></p>
+                            <a class="nut nut-chinh nut-lien-he" href="mailto:uy392007@gmail.com">Gửi email cho mình</a>
+                        </div>
+                        <!-- Thẻ aside chứa thông điệp bổ sung, không làm gián đoạn nội dung chính -->
+                        <aside aria-label="Ghi chú liên hệ">
+                            <h3>Ghi chú</h3>
+                            <p>Mình luôn sẵn sàng trao đổi về máy tính, phần cứng, hệ điều hành và các chủ đề CNTT.</p>
+                        </aside>
+                    </div>
+                </section>
+
+                <!-- ===== Section 4: Liên kết hồ sơ GitHub cá nhân ===== -->
+                <section id="github" aria-labelledby="tieu-de-github">
+                    <h2 class="tieu-de-section" id="tieu-de-github">GitHub</h2>
+                    <p class="mo-ta-section">Nơi lưu trữ các bài thực hành, dự án học tập và quá trình rèn luyện lập trình.</p>
+                    <div class="github-card">
+                        <h3>Hồ sơ GitHub của Vũ Thành Uy</h3>
+                        <p>Xem các mã nguồn và sản phẩm mình đã chia sẻ trên GitHub.</p>
+                        <a class="nut nut-chinh" href="https://github.com/UyHiHung" target="_blank" rel="noopener noreferrer">Mở GitHub của mình</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== Chân trang: bản quyền và lời kết ===== -->
+    <footer>
+        <div class="khung">
+            <p>&copy; 2026 Vũ Thành Uy. Portfolio cá nhân.</p>
+            <p>Sinh viên Công nghệ Thông tin &middot; Trường Đại học Lạc Hồng &middot; <a href="https://github.com/UyHiHung" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        </div>
+    </footer>
+</body>
+</html>
