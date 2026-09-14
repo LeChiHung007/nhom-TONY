@@ -6,10 +6,7 @@
     <meta name="description" content="Portfolio cá nhân của Lê Chí Hưng - Sinh viên Công nghệ thông tin">
     <title>Lê Chí Hưng | Portfolio</title>
     <style>
-        /* ============================================================
-           CSS RESET & PHONG CÁCH TỐI GIẢN (NỀN TRẮNG CHỮ ĐEN)
-           Đảm bảo tính dễ đọc, chuẩn typography và bố cục sạch sẽ
-           ============================================================ */
+       
         * {
             margin: 0;
             padding: 0;
@@ -30,7 +27,6 @@
             padding: 2rem 0;
         }
 
-        /* HEADER & NAVIGATION */
         header {
             border-bottom: 2px solid #111111;
             padding-bottom: 1.5rem;
@@ -71,7 +67,6 @@
             border-bottom: 1px solid #111111;
         }
 
-        /* MAIN & SECTIONS */
         section {
             margin-bottom: 3rem;
         }
@@ -85,7 +80,6 @@
             margin-bottom: 1rem;
         }
 
-        /* DANH SÁCH & NỘI DUNG */
         ul {
             list-style-position: inside;
             margin-top: 0.5rem;
@@ -110,7 +104,6 @@
             margin-bottom: 0.25rem;
         }
 
-        /* BẢNG KỸ NĂNG */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -129,7 +122,6 @@
             font-weight: 600;
         }
 
-        /* LIÊN HỆ */
         address {
             font-style: normal;
             line-height: 1.8;
@@ -140,7 +132,6 @@
             text-decoration: underline;
         }
 
-        /* FOOTER */
         footer {
             border-top: 1px solid #cccccc;
             padding: 2rem 0;
@@ -160,29 +151,13 @@
 </head>
 <body>
 
-    <!--
-      ==========================================================================
-      1. THẺ <header>:
-      - Vai trò Semantic: Đại diện cho phần mở đầu hoặc phần đầu trang của tài liệu (hoặc của một section).
-      - Chức năng: Thường chứa logo, tên trang, tiêu đề chính (h1), slogan và thanh điều hướng chính.
-      - Tầm quan trọng: Giúp công cụ tìm kiếm (SEO) và thiết bị hỗ trợ tiếp cận (Screen Readers)
-        nhận biết ngay đây là vùng chứa thông tin định danh của website.
-      ==========================================================================
-    -->
+ 
     <header>
         <div class="container">
             <h1 class="site-title">Lê Chí Hưng</h1>
             <p class="site-subtitle">Sinh viên Công nghệ Thông tin | 19 tuổi</p>
 
-            <!--
-              ======================================================================
-              2. THẺ <nav>:
-              - Vai trò Semantic: Xác định vùng chứa các liên kết điều hướng quan trọng của trang.
-              - Chức năng: Chứa danh sách các liên kết nội bộ (nhảy đến các section) hoặc ngoại bộ.
-              - Tầm quan trọng: Trình đọc màn hình (Screen Reader) có thể cung cấp phím tắt
-                cho người khiếm thị bỏ qua nội dung này hoặc chuyển thẳng đến vùng điều hướng.
-              ======================================================================
-            -->
+       
             <nav aria-label="Điều hướng chính">
                 <ul>
                     <li><a href="#about">Giới thiệu</a></li>
@@ -194,25 +169,10 @@
         </div>
     </header>
 
-    <!--
-      ==========================================================================
-      3. THẺ <main>:
-      - Vai trò Semantic: Đại diện cho phần nội dung trung tâm, độc nhất và quan trọng nhất của trang.
-      - Quy chuẩn: Trong một tài liệu HTML chuẩn, chỉ nên có DUY NHẤT một thẻ <main> không bị ẩn.
-        Thẻ này KHÔNG được chứa các thành phần lặp lại trên nhiều trang (như logo, nav, footer bản quyền).
-      - Tầm quan trọng: Tối ưu SEO mạnh mẽ vì bot tìm kiếm sẽ tập trung lấy chỉ mục nội dung ở đây.
-      ==========================================================================
-    -->
+  
     <main class="container">
 
-        <!--
-          ======================================================================
-          4. THẺ <section> (Section 1: Giới thiệu bản thân):
-          - Vai trò Semantic: Đại diện cho một phân đoạn tài liệu theo chủ đề cụ thể.
-          - Quy chuẩn: Một <section> hợp lệ về mặt ngữ nghĩa nên luôn bắt đầu bằng một tiêu đề (h2 - h6).
-          - Chức năng: Nhóm các thông tin tổng quan, tiểu sử và định hướng phát triển bản thân.
-          ======================================================================
-        -->
+    
         <section id="about">
             <h2>Giới thiệu bản thân</h2>
             <p>
@@ -226,13 +186,7 @@
             </p>
         </section>
 
-        <!--
-          ======================================================================
-          5. THẺ <section> (Section 2: Học vấn & Kỹ năng):
-          - Vai trò Semantic: Nhóm toàn bộ thông tin liên quan đến quá trình đào tạo và năng lực kỹ thuật.
-          - Chức năng: Giúp nhà tuyển dụng hoặc người xem nắm bắt nhanh trình độ và chuyên môn.
-          ======================================================================
-        -->
+    
         <section id="education-skills">
             <h2>Học vấn & Kỹ năng</h2>
 
@@ -273,21 +227,11 @@
             </div>
         </section>
 
-        <!--
-          ======================================================================
-          6. THẺ <section> (Section 3: Dự án cá nhân):
-          - Vai trò Semantic: Nhóm các sản phẩm hoặc bài tập lập trình tiêu biểu đã thực hiện.
-          - Có thể kết hợp thêm thẻ <article> bên trong: mỗi dự án là một đơn vị nội dung độc lập,
-            có thể tồn tại độc lập mà vẫn có nghĩa.
-          ======================================================================
-        -->
+     
         <section id="projects">
             <h2>Dự án tiêu biểu</h2>
 
-            <!--
-              THẺ <article>:
-              - Đại diện cho một bài viết, mục tin tức hoặc một sản phẩm độc lập có thể phân phối độc lập.
-            -->
+          
             <article class="item-block">
                 <h3 class="item-title">1. Website Portfolio Cá Nhân</h3>
                 <p class="item-meta">Công nghệ: Semantic HTML5, CSS3 Tối giản (Responsive)</p>
@@ -316,21 +260,12 @@
             </article>
         </section>
 
-        <!--
-          ======================================================================
-          7. THẺ <section> (Section 4: Thông tin liên hệ):
-          - Vai trò Semantic: Khu vực cung cấp phương thức liên lạc.
-          - Kết hợp với thẻ <address>: Thẻ ngữ nghĩa chuyên dụng để chứa thông tin liên hệ của tác giả.
-          ======================================================================
-        -->
+     
         <section id="contact">
             <h2>Thông tin liên hệ</h2>
             <p>Tôi luôn sẵn sàng đón nhận những cơ hội học hỏi, thực tập và hợp tác trong các dự án công nghệ:</p>
             <br>
-            <!--
-              THẺ <address>:
-              - Xác định thông tin liên hệ (email, số điện thoại, địa chỉ, tài khoản xã hội) của tác giả/chủ sở hữu tài liệu.
-            -->
+          
             <address>
                 <p><strong>Họ và tên:</strong> Lê Chí Hưng</p>
                 <p><strong>Độ tuổi:</strong> 19 tuổi</p>
@@ -342,15 +277,7 @@
 
     </main>
 
-    <!--
-      ==========================================================================
-      8. THẺ <footer>:
-      - Vai trò Semantic: Đại diện cho phần chân trang của tài liệu hoặc section.
-      - Chức năng: Chứa thông tin bản quyền (copyright), ghi chú pháp lý, ngày tháng cập nhật,
-        hoặc các liên kết bổ sung.
-      - Tầm quan trọng: Cung cấp điểm kết thúc rõ ràng cho trang và các thông tin pháp lý tiêu chuẩn.
-      ==========================================================================
-    -->
+ 
     <footer>
         <div class="container">
             <p>&copy; 2026 Lê Chí Hưng. Tất cả các quyền được bảo lưu.</p>
