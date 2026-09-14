@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Lê Công Tuấn Anh</title>
+</head>
+<body>
+
+    <!-- ==========================================================================
+        1. THẺ <header> (PHẦN ĐẦU TRANG)
+        - VAI TRÒ SEMANTIC: 
+          Đại diện cho phần đầu giới thiệu của toàn trang web hoặc của một phân đoạn.
+          Thông thường, <header> chứa thông tin nhận diện thương hiệu cá nhân (tên, chức danh,
+          ảnh đại diện, slogan) và thanh điều hướng chính (<nav>).
+       ========================================================================== -->
+    <header>
+        <div class="logo">
+            <h1>Lê Công Tuấn Anh</h1>
+            <p>Lập trình viên Web / Frontend Developer</p>
+        </div>
+
+        <!-- ======================================================================
+            2. THẺ <nav> (KHỐI ĐIỀU HƯỚNG)
+            - VAI TRÒ SEMANTIC: 
+              Xác định một khối chứa các liên kết điều hướng quan trọng của website 
+              (chuyển hướng giữa các mục trong trang hoặc sang trang con).
+              Giúp công cụ tìm kiếm (SEO) và thiết bị hỗ trợ tiếp cận (Screen Readers) 
+              dễ dàng nhận diện đây là thanh menu chính.
+           ====================================================================== -->
+        <nav aria-label="Menu điều hướng chính">
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ==========================================================================
+        3. THẺ <main> (NỘI DUNG TRỌNG TÂM CỦA TRANG)
+        - VAI TRÒ SEMANTIC: 
+          Bao bọc toàn bộ nội dung chính, quan trọng và duy nhất của trang web.
+          Chuẩn HTML5 quy định: Trong một tài liệu web chỉ nên có duy nhất 1 thẻ <main> 
+          hiển thị (không ẩn). Nội dung trong <main> không được lặp lại ở các trang khác 
+          (như menu chung, sidebar dùng chung hay footer chung).
+       ========================================================================== -->
+    <main>
+
+        <!-- ======================================================================
+            4. THẺ <section> (CÁC PHÂN ĐOẠN NỘI DUNG THEO CHỦ ĐỀ)
+            - VAI TRÒ SEMANTIC: 
+              Đại diện cho một phân đoạn tài liệu độc lập theo một chủ đề cụ thể.
+              Theo tiêu chuẩn HTML5, mỗi <section> nên đi kèm một thẻ tiêu đề (heading 
+              từ <h2> đến <h6>) để định danh và phân cấp cấu trúc cho công cụ tìm kiếm.
+           ====================================================================== -->
+
+        <!-- Section 1: Giới thiệu bản thân -->
+        <section id="about">
+            <h2>Giới thiệu bản thân</h2>
+            <p>
+                Xin chào! Tôi là <strong>Lê Công Tuấn Anh</strong>, một lập trình viên đam mê xây dựng 
+                các sản phẩm web hiệu năng cao, giao diện trực quan và trải nghiệm người dùng tối ưu.
+            </p>
+            <p>
+                Tôi luôn chú trọng viết mã nguồn sạch (clean code), chuẩn ngữ nghĩa (semantic HTML) 
+                và thân thiện với các công cụ tìm kiếm (SEO).
+            </p>
+        </section>
+
+        <!-- Section 2: Dự án tiêu biểu -->
+        <section id="projects">
+            <h2>Dự án nổi bật</h2>
+            <div class="project-grid">
+                <article class="project-card">
+                    <h3>Hệ thống Quản lý Học tập (LMS)</h3>
+                    <p>Xây dựng giao diện Responsive, tích hợp RESTful API quản lý khóa học và người dùng.</p>
+                </article>
+                <article class="project-card">
+                    <h3>Trang Thương mại điện tử mini</h3>
+                    <p>Tối ưu tốc độ tải trang, giỏ hàng tương tác thời gian thực và thanh toán trực tuyến.</p>
+                </article>
+                <article class="project-card">
+                    <h3>Landing Page cá nhân</h3>
+                    <p>Áp dụng chuẩn HTML5 Semantic và CSS Flexbox/Grid hiện đại, thân thiện thiết bị di động.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section 3: Kỹ năng chuyên môn -->
+        <section id="skills">
+            <h2>Kỹ năng chuyên môn</h2>
+            <ul class="skills-list">
+                <li><strong>Frontend:</strong> HTML5 (Semantic), CSS3, JavaScript (ES6+), React.js</li>
+                <li><strong>Backend:</strong> Node.js, Express, RESTful APIs, MongoDB / MySQL</li>
+                <li><strong>Công cụ & Khác:</strong> Git, GitHub, VS Code, Figma, Tối ưu hóa SEO cơ bản</li>
+            </ul>
+        </section>
+
+        <!-- Section 4 (Bổ sung): Liên hệ -->
+        <section id="contact">
+            <h2>Thông tin liên hệ</h2>
+            <p>Nếu bạn quan tâm đến việc hợp tác hoặc thảo luận về các dự án công nghệ, hãy liên hệ với tôi:</p>
+            <ul class="skills-list">
+                <li><strong>Email:</strong> <a href="mailto:lecongtuananh@example.com">lecongtuananh@example.com</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/lecongtuananh</a></li>
+                <li><strong>LinkedIn:</strong> <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">linkedin.com/in/lecongtuananh</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+        5. THẺ <footer> (PHẦN CHÂN TRANG)
+        - VAI TRÒ SEMANTIC: 
+          Đại diện cho phần kết thúc của trang web (hoặc của một section/article).
+          Thường chứa các thông tin như: Bản quyền tác giả (copyright), các liên kết pháp lý,
+          chính sách bảo mật, liên kết mạng xã hội hoặc thông tin tác giả.
+       ========================================================================== -->
+    <footer>
+        <p>&copy; 2026 Lê Công Tuấn Anh. Bản quyền thuộc về tác giả.</p>
+        <p>Được thiết kế và xây dựng theo chuẩn HTML5 Semantic.</p>
+    </footer>
+
+</body>
+</html>
