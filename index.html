@@ -1,361 +1,132 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+    
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio cá nhân của Lê Chí Hưng - Sinh viên Công nghệ thông tin">
-    <title>Lê Chí Hưng | Portfolio</title>
-    <style>
-        /* ============================================================
-           CSS RESET & PHONG CÁCH TỐI GIẢN (NỀN TRẮNG CHỮ ĐEN)
-           Đảm bảo tính dễ đọc, chuẩn typography và bố cục sạch sẽ
-           ============================================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #ffffff;
-            color: #111111;
-            line-height: 1.6;
-            padding: 0 1rem;
-        }
+    <meta name="description" content="Portfolio cá nhân của Front-end Developer - Giới thiệu bản thân, kỹ năng, các dự án tiêu biểu và thông tin liên hệ.">
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 0;
-        }
-
-        /* HEADER & NAVIGATION */
-        header {
-            border-bottom: 2px solid #111111;
-            padding-bottom: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .site-title {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.25rem;
-        }
-
-        .site-subtitle {
-            font-size: 1.1rem;
-            color: #444444;
-            margin-bottom: 1rem;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-            padding-top: 0.5rem;
-        }
-
-        nav a {
-            color: #111111;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s ease;
-        }
-
-        nav a:hover,
-        nav a:focus {
-            border-bottom: 1px solid #111111;
-        }
-
-        /* MAIN & SECTIONS */
-        section {
-            margin-bottom: 3rem;
-        }
-
-        section h2 {
-            font-size: 1.35rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #111111;
-            padding-bottom: 0.4rem;
-            margin-bottom: 1rem;
-        }
-
-        /* DANH SÁCH & NỘI DUNG */
-        ul {
-            list-style-position: inside;
-            margin-top: 0.5rem;
-        }
-
-        li {
-            margin-bottom: 0.4rem;
-        }
-
-        .item-block {
-            margin-bottom: 1.25rem;
-        }
-
-        .item-title {
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
-
-        .item-meta {
-            font-size: 0.9rem;
-            color: #555555;
-            margin-bottom: 0.25rem;
-        }
-
-        /* BẢNG KỸ NĂNG */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
-            margin-top: 0.75rem;
-        }
-
-        .skill-category {
-            border: 1px solid #cccccc;
-            padding: 1rem;
-        }
-
-        .skill-category h3 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        /* LIÊN HỆ */
-        address {
-            font-style: normal;
-            line-height: 1.8;
-        }
-
-        address a {
-            color: #111111;
-            text-decoration: underline;
-        }
-
-        /* FOOTER */
-        footer {
-            border-top: 1px solid #cccccc;
-            padding: 2rem 0;
-            text-align: center;
-            font-size: 0.875rem;
-            color: #555555;
-            margin-top: 4rem;
-        }
-
-        @media (max-width: 600px) {
-            nav ul {
-                flex-wrap: wrap;
-                gap: 0.75rem 1.25rem;
-            }
-        }
-    </style>
+    <title>Portfolio Cá Nhân | Front-end Developer</title>
 </head>
 <body>
 
-    <!--
-      ==========================================================================
-      1. THẺ <header>:
-      - Vai trò Semantic: Đại diện cho phần mở đầu hoặc phần đầu trang của tài liệu (hoặc của một section).
-      - Chức năng: Thường chứa logo, tên trang, tiêu đề chính (h1), slogan và thanh điều hướng chính.
-      - Tầm quan trọng: Giúp công cụ tìm kiếm (SEO) và thiết bị hỗ trợ tiếp cận (Screen Readers)
-        nhận biết ngay đây là vùng chứa thông tin định danh của website.
-      ==========================================================================
-    -->
     <header>
-        <div class="container">
-            <h1 class="site-title">Lê Chí Hưng</h1>
-            <p class="site-subtitle">Sinh viên Công nghệ Thông tin | 19 tuổi</p>
-
-            <!--
-              ======================================================================
-              2. THẺ <nav>:
-              - Vai trò Semantic: Xác định vùng chứa các liên kết điều hướng quan trọng của trang.
-              - Chức năng: Chứa danh sách các liên kết nội bộ (nhảy đến các section) hoặc ngoại bộ.
-              - Tầm quan trọng: Trình đọc màn hình (Screen Reader) có thể cung cấp phím tắt
-                cho người khiếm thị bỏ qua nội dung này hoặc chuyển thẳng đến vùng điều hướng.
-              ======================================================================
-            -->
-            <nav aria-label="Điều hướng chính">
-                <ul>
-                    <li><a href="#about">Giới thiệu</a></li>
-                    <li><a href="#education-skills">Học vấn & Kỹ năng</a></li>
-                    <li><a href="#projects">Dự án</a></li>
-                    <li><a href="#contact">Liên hệ</a></li>
-                </ul>
-            </nav>
+        <div class="header-brand">
+            
+            <h1>Phạm Hoàng Nam</h1>
+            <p>Junior Front-end Developer / Web Enthusiast</p>
         </div>
+
+        <nav aria-label="Menu chính">
+            <ul>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#skills-projects">Kỹ năng & Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!--
-      ==========================================================================
-      3. THẺ <main>:
-      - Vai trò Semantic: Đại diện cho phần nội dung trung tâm, độc nhất và quan trọng nhất của trang.
-      - Quy chuẩn: Trong một tài liệu HTML chuẩn, chỉ nên có DUY NHẤT một thẻ <main> không bị ẩn.
-        Thẻ này KHÔNG được chứa các thành phần lặp lại trên nhiều trang (như logo, nav, footer bản quyền).
-      - Tầm quan trọng: Tối ưu SEO mạnh mẽ vì bot tìm kiếm sẽ tập trung lấy chỉ mục nội dung ở đây.
-      ==========================================================================
-    -->
-    <main class="container">
+    <main>
 
-        <!--
-          ======================================================================
-          4. THẺ <section> (Section 1: Giới thiệu bản thân):
-          - Vai trò Semantic: Đại diện cho một phân đoạn tài liệu theo chủ đề cụ thể.
-          - Quy chuẩn: Một <section> hợp lệ về mặt ngữ nghĩa nên luôn bắt đầu bằng một tiêu đề (h2 - h6).
-          - Chức năng: Nhóm các thông tin tổng quan, tiểu sử và định hướng phát triển bản thân.
-          ======================================================================
-        -->
         <section id="about">
             <h2>Giới thiệu bản thân</h2>
+            
+            <figure>
+                <img src="https://via.placeholder.com/150" alt="Ảnh chân dung của Phạm Hoàng Nam">
+                <figcaption>Phạm Hoàng Nam - Lập trình viên Front-end tương lai</figcaption>
+            </figure>
+
             <p>
-                Xin chào, tôi là <strong>Lê Chí Hưng</strong>, hiện là sinh viên 19 tuổi đang theo học chuyên ngành 
-                Công nghệ Thông tin. Tôi có niềm đam mê sâu sắc với lập trình phần mềm, thiết kế hệ thống và phát triển web.
+                Xin chào! Tôi là một lập trình viên Front-end với niềm đam mê xây dựng giao diện web 
+                hiện đại, trực quan và chuẩn tiếp cận (Web Accessibility). Hiện tại tôi đang tập trung 
+                trau dồi HTML5, CSS3, JavaScript và các công nghệ web nền tảng.
             </p>
-            <br>
             <p>
-                Với mục tiêu trở thành một kỹ sư phần mềm chuyên nghiệp, tôi luôn chủ động rèn luyện tư duy thuật toán, 
-                học hỏi các công nghệ mới và xây dựng các dự án thực tế để trau dồi kỹ năng giải quyết vấn đề.
+                Mục tiêu của tôi là tạo ra những trải nghiệm người dùng mượt mà, tối ưu hiệu suất và 
+                tuân thủ các tiêu chuẩn code sạch (Clean Code).
             </p>
         </section>
 
-        <!--
-          ======================================================================
-          5. THẺ <section> (Section 2: Học vấn & Kỹ năng):
-          - Vai trò Semantic: Nhóm toàn bộ thông tin liên quan đến quá trình đào tạo và năng lực kỹ thuật.
-          - Chức năng: Giúp nhà tuyển dụng hoặc người xem nắm bắt nhanh trình độ và chuyên môn.
-          ======================================================================
-        -->
-        <section id="education-skills">
-            <h2>Học vấn & Kỹ năng</h2>
+        <section id="skills-projects">
+            <h2>Kỹ năng & Dự án tiêu biểu</h2>
 
-            <div class="item-block">
-                <h3 class="item-title">Đại học / Cao đẳng - Chuyên ngành Công nghệ Thông tin</h3>
-                <p class="item-meta">Thời gian: 2024 - Hiện tại | Sinh viên năm 2</p>
-                <p>Tập trung nghiên cứu: Cấu trúc dữ liệu và giải thuật, Lập trình hướng đối tượng (OOP), Cơ sở dữ liệu và Lập trình Web căn bản.</p>
+            <div class="skills-container">
+                <h3>Kỹ năng chuyên môn</h3>
+                <ul>
+                    <li>Semantic HTML5 & Web Accessibility (a11y)</li>
+                    <li>CSS3, Flexbox, CSS Grid & Responsive Design</li>
+                    <li>JavaScript hiện đại (ES6+)</li>
+                    <li>Git & GitHub trong quản lý mã nguồn</li>
+                </ul>
             </div>
 
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Ngôn ngữ lập trình</h3>
-                    <ul>
-                        <li>HTML5 / CSS3</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>Python</li>
-                        <li>C / C++</li>
-                    </ul>
-                </div>
+            <div class="projects-container">
+                <h3>Dự án tiêu biểu</h3>
 
-                <div class="skill-category">
-                    <h3>Công cụ & Nền tảng</h3>
-                    <ul>
-                        <li>Git / GitHub</li>
-                        <li>Visual Studio Code</li>
-                        <li>Hệ điều hành Windows & Linux cơ bản</li>
-                    </ul>
-                </div>
+                <article class="project-card">
+                    <h4>Landing Page Doanh Nghiệp</h4>
+                    <p>Trang đích giới thiệu sản phẩm công nghệ với giao diện thân thiện và tốc độ tải trang nhanh.</p>
+                    <p><strong>Công nghệ sử dụng:</strong> HTML5, CSS3 Responsive</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Xem Demo</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Mã nguồn trên GitHub</a>
+                </article>
 
-                <div class="skill-category">
-                    <h3>Kỹ năng mềm</h3>
-                    <ul>
-                        <li>Tự học & đọc tài liệu kỹ thuật</li>
-                        <li>Tư duy phản biện & giải quyết vấn đề</li>
-                        <li>Làm việc nhóm & quản lý thời gian</li>
-                    </ul>
-                </div>
+                <article class="project-card">
+                    <h4>Trang Portfolio Cá Nhân</h4>
+                    <p>Website portfolio cá nhân xây dựng chuẩn Semantic HTML5, cấu trúc rõ ràng, tối ưu SEO.</p>
+                    <p><strong>Công nghệ sử dụng:</strong> Semantic HTML5, CSS Grid</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Xem Demo</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Mã nguồn trên GitHub</a>
+                </article>
             </div>
         </section>
 
-        <!--
-          ======================================================================
-          6. THẺ <section> (Section 3: Dự án cá nhân):
-          - Vai trò Semantic: Nhóm các sản phẩm hoặc bài tập lập trình tiêu biểu đã thực hiện.
-          - Có thể kết hợp thêm thẻ <article> bên trong: mỗi dự án là một đơn vị nội dung độc lập,
-            có thể tồn tại độc lập mà vẫn có nghĩa.
-          ======================================================================
-        -->
-        <section id="projects">
-            <h2>Dự án tiêu biểu</h2>
-
-            <!--
-              THẺ <article>:
-              - Đại diện cho một bài viết, mục tin tức hoặc một sản phẩm độc lập có thể phân phối độc lập.
-            -->
-            <article class="item-block">
-                <h3 class="item-title">1. Website Portfolio Cá Nhân</h3>
-                <p class="item-meta">Công nghệ: Semantic HTML5, CSS3 Tối giản (Responsive)</p>
-                <p>
-                    Trang giới thiệu thông tin cá nhân, định hướng nghề nghiệp và các sản phẩm đã thực hiện.
-                    Được xây dựng tối ưu cấu trúc Semantic chuẩn SEO và khả năng tiếp cận (Accessibility).
-                </p>
-            </article>
-
-            <article class="item-block">
-                <h3 class="item-title">2. Ứng dụng Máy Tính Cầm Tay (Calculator App)</h3>
-                <p class="item-meta">Công nghệ: Python (Tkinter)</p>
-                <p>
-                    Ứng dụng máy tính giao diện đồ họa cho phép thực hiện các phép toán cơ bản và mở rộng, 
-                    xử lý ngoại lệ và tối ưu trải nghiệm tương tác của người dùng.
-                </p>
-            </article>
-
-            <article class="item-block">
-                <h3 class="item-title">3. Bộ công cụ giải thuật & bài toán lặp</h3>
-                <p class="item-meta">Công nghệ: Python / C++</p>
-                <p>
-                    Tập hợp các thuật toán tối ưu xử lý chuỗi, mảng và các bài toán lặp logic nhằm rèn luyện 
-                    nền tảng tư duy lập trình vững chắc.
-                </p>
-            </article>
-        </section>
-
-        <!--
-          ======================================================================
-          7. THẺ <section> (Section 4: Thông tin liên hệ):
-          - Vai trò Semantic: Khu vực cung cấp phương thức liên lạc.
-          - Kết hợp với thẻ <address>: Thẻ ngữ nghĩa chuyên dụng để chứa thông tin liên hệ của tác giả.
-          ======================================================================
-        -->
         <section id="contact">
-            <h2>Thông tin liên hệ</h2>
-            <p>Tôi luôn sẵn sàng đón nhận những cơ hội học hỏi, thực tập và hợp tác trong các dự án công nghệ:</p>
-            <br>
-            <!--
-              THẺ <address>:
-              - Xác định thông tin liên hệ (email, số điện thoại, địa chỉ, tài khoản xã hội) của tác giả/chủ sở hữu tài liệu.
-            -->
+            <h2>Liên hệ với tôi</h2>
+            <p>Nếu bạn có câu hỏi hoặc muốn hợp tác, hãy để lại tin nhắn qua biểu mẫu bên dưới:</p>
+
+            <form action="#" method="POST">
+                <div>
+                    <label for="fullName">Họ và tên:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Nhập họ và tên..." required>
+                </div>
+
+                <div>
+                    <label for="email">Địa chỉ Email:</label>
+                    <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                </div>
+
+                <div>
+                    <label for="message">Nội dung tin nhắn:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Để lại lời nhắn của bạn..." required></textarea>
+                </div>
+
+                <button type="submit">Gửi tin nhắn</button>
+            </form>
+
             <address>
-                <p><strong>Họ và tên:</strong> Lê Chí Hưng</p>
-                <p><strong>Độ tuổi:</strong> 19 tuổi</p>
-                <p><strong>Email:</strong> <a href="mailto:lechihung.contact@example.com">lechihung.contact@example.com</a></p>
-                <p><strong>GitHub:</strong> <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com/lechihung</a></p>
-                <p><strong>Địa chỉ:</strong> Việt Nam</p>
+                <p>Email: <a href="mailto:phamhoangnam@example.com">phamhoangnam@gmail.com</a></p>
+                <p>Điện thoại: <a href="tel:+84123456789">(+84) 123 456 789</a></p>
+                <p>Địa chỉ: Biên  Hòa, Việt Nam</p>
             </address>
         </section>
 
     </main>
 
-    <!--
-      ==========================================================================
-      8. THẺ <footer>:
-      - Vai trò Semantic: Đại diện cho phần chân trang của tài liệu hoặc section.
-      - Chức năng: Chứa thông tin bản quyền (copyright), ghi chú pháp lý, ngày tháng cập nhật,
-        hoặc các liên kết bổ sung.
-      - Tầm quan trọng: Cung cấp điểm kết thúc rõ ràng cho trang và các thông tin pháp lý tiêu chuẩn.
-      ==========================================================================
-    -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Lê Chí Hưng. Tất cả các quyền được bảo lưu.</p>
-            <p>Trang web được xây dựng với việc lên ý tưởng và thiết kế đơn giản.</p>
-        </div>
+        <p>&copy; 2026 Phạm Hoàng Nam. Bản quyền thuộc về tác giả.</p>
+
+        <nav aria-label="Liên kết mạng xã hội">
+            <ul>
+                <li><a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+            </ul>
+        </nav>
+
+        <p><a href="#top">Quay về đầu trang &uarr;</a></p>
     </footer>
 
 </body>
