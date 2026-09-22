@@ -1,0 +1,582 @@
+/* ==========================================================================
+   DESIGN SYSTEM - CẤU HÌNH BIẾN CSS TOÀN CỤC TẠI :ROOT
+   Bao gồm: Mã màu, Khoảng cách (Spacing), Bo góc (Radius), Đổ bóng (Shadow),
+            Kích thước bố cục (Layout) và Hiệu ứng chuyển động (Transitions)
+   ========================================================================== */
+
+:root {
+  /* ==========================================================================
+     1. HỆ THỐNG MÃ MÀU (COLOR SYSTEM TOKENS)
+     ========================================================================== */
+
+  /* Màu chủ đạo (Primary Color) */
+  --primary: #0078d7;
+  --primary-hover: #005a9e;
+  --primary-light: #e0f2fe;
+  --primary-rgb: 0, 120, 215;
+
+  /* Màu phụ (Secondary Color) */
+  --secondary: #10b981;
+  --secondary-hover: #059669;
+  --secondary-light: #ecfdf5;
+  --secondary-rgb: 16, 185, 129;
+
+  /* 3 Mức độ xám chuẩn phân cấp thị giác */
+  --gray-light: #e2e8f0;      /* Mức 1 - Xám nhạt: Đường viền (border), divider */
+  --gray-medium: #64748b;     /* Mức 2 - Xám trung bình: Text phụ, icon, ghi chú */
+  --gray-dark: #1e293b;       /* Mức 3 - Xám đậm: Tiêu đề, chữ chính, footer */
+
+  /* Màu nền (Backgrounds) */
+  --bg-color: #f0f2f5;        /* Nền tổng thể trang web (body) */
+  --bg-surface: #ffffff;      /* Nền thẻ / khối nội dung (card/surface) */
+  --bg-subtle: #f8fafc;       /* Nền khối con, item phụ */
+
+  /* Màu trung tính đặc biệt */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Aliases dự phòng tương thích ngược */
+  --primary-color: var(--primary);
+  --secondary-color: var(--secondary);
+  --bg-main: var(--bg-color);
+  --bg-card: var(--bg-surface);
+  --text-main: var(--gray-dark);
+  --text-muted: var(--gray-medium);
+  --border-color: var(--gray-light);
+
+  /* ==========================================================================
+     2. HỆ THỐNG KHOẢNG CÁCH (SPACING SYSTEM TOKENS)
+     Chuẩn hóa theo hệ thống 4px / 8px Grid System
+     ========================================================================== */
+  --spacing-2xs: 4px;         /* Khoảng cách siêu nhỏ: viền sát, icon margin */
+  --spacing-xs:  8px;         /* Khoảng cách nhỏ: gap nhỏ, margin text, padding nút */
+  --spacing-sm:  12px;        /* Khoảng cách vừa nhỏ: gap danh sách, padding gọn */
+  --spacing-md:  16px;        /* Khoảng cách tiêu chuẩn: padding card con, gap khối */
+  --spacing-lg:  20px;        /* Khoảng cách lớn: padding card chính, gap grid */
+  --spacing-xl:  24px;        /* Khoảng cách rất lớn: padding sidebar, aside gap */
+  --spacing-2xl: 32px;        /* Khoảng cách đặc biệt: padding header, content-box */
+
+  /* ==========================================================================
+     3. HỆ THỐNG BO GÓC (BORDER RADIUS TOKENS)
+     ========================================================================== */
+  --radius-sm:   6px;         /* Bo góc nhỏ: Nút menu, item dự án */
+  --radius-md:   10px;        /* Bo góc vừa: Thẻ dịch vụ */
+  --radius-lg:   12px;        /* Bo góc lớn: Header, Aside, Content Box, Footer */
+  --radius-full: 9999px;      /* Bo tròn dạng viên thuốc (Pill): Thẻ Kỹ năng */
+
+  /* ==========================================================================
+     4. HỆ THỐNG ĐỔ BÓNG (BOX SHADOW TOKENS)
+     ========================================================================== */
+  --shadow-sm:      0 2px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md:      0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-lg:      0 8px 20px rgba(0, 0, 0, 0.08);
+  --shadow-primary: 0 4px 15px rgba(var(--primary-rgb), 0.2);
+  --shadow-hover:   0 6px 16px rgba(var(--primary-rgb), 0.25);
+
+  /* ==========================================================================
+     5. KÍCH THƯỚC BỐ CỤC (LAYOUT SIZING TOKENS)
+     ========================================================================== */
+  --container-max-width: 1200px;
+  --sidebar-width:       250px;
+
+  /* ==========================================================================
+     6. HIỆU ỨNG CHUYỂN ĐỘNG (TRANSITION TOKENS)
+     ========================================================================== */
+  --transition-fast:   all 0.2s ease;
+  --transition-normal: all 0.3s ease;
+}
+
+/* ==========================================================================
+   CSS RESET & CẤU HÌNH CƠ BẢN
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--gray-dark);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   LAYOUT GRID TỔNG THỂ (DESKTOP)
+   ========================================================================== */
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  gap: var(--spacing-lg);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+header {
+  grid-area: header;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background-size: 200% 200%;
+  color: var(--color-white);
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition-normal);
+  animation: gradientShift 8s ease infinite;
+}
+
+header:hover {
+  transform: scale(0.99);
+  box-shadow: var(--shadow-hover);
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+header p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+   SIDEBAR (ASIDE)
+   ========================================================================== */
+
+aside {
+  grid-area: sidebar;
+  background: var(--bg-surface);
+  border: 1px solid var(--gray-light);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  height: fit-content;
+}
+
+.profile-card {
+  text-align: center;
+}
+
+.profile-card .avatar {
+  font-size: 3.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.profile-card h3 {
+  font-size: 1.25rem;
+  color: var(--gray-dark);
+}
+
+.profile-card .role {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.sidebar-nav h4,
+.sidebar-info h4 {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--gray-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav ul li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.sidebar-nav ul li a {
+  color: var(--gray-dark);
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.sidebar-nav ul li a:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.sidebar-info p {
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-2xs);
+  color: var(--gray-medium);
+}
+
+/* ==========================================================================
+   MAIN CONTENT
+   ========================================================================== */
+
+main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.content-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--gray-light);
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+}
+
+.content-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.content-box h2 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--gray-light);
+  padding-bottom: var(--spacing-xs);
+}
+
+.about-desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--gray-dark);
+}
+
+/* ==========================================================================
+   KỸ NĂNG (SKILLS - FLEXBOX)
+   ========================================================================== */
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+  padding: var(--spacing-sm) 0;
+}
+
+.skill {
+  background-color: var(--primary);
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition-normal);
+  cursor: default;
+}
+
+.skill:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ==========================================================================
+   DỊCH VỤ (SERVICES - CSS GRID)
+   Desktop (> 1024px): 4 CỘT
+   ========================================================================== */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+.service-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg) var(--spacing-sm);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition-normal);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-hover);
+  background: var(--bg-surface);
+}
+
+.service-icon {
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-card h3 {
+  font-size: 1.05rem;
+  color: var(--gray-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+.service-card p {
+  font-size: 0.88rem;
+  color: var(--gray-medium);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   DỰ ÁN (PROJECTS)
+   ========================================================================== */
+
+.project-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.project-list li {
+  background: var(--bg-subtle);
+  border: 1px solid var(--gray-light);
+  border-left: 4px solid var(--primary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.project-list li:hover {
+  transform: translateX(5px);
+  border-left-color: var(--secondary);
+  box-shadow: var(--shadow-md);
+}
+
+.project-list h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-2xs);
+  color: var(--gray-dark);
+}
+
+.project-list p {
+  font-size: 0.95rem;
+  color: var(--gray-medium);
+}
+
+/* ==========================================================================
+   LIÊN HỆ & LIÊN KẾT
+   ========================================================================== */
+
+.content-box a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.content-box a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+footer {
+  grid-area: footer;
+  background: var(--gray-dark);
+  color: var(--gray-light);
+  border-top: 3px solid var(--primary);
+  text-align: center;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN CHO TABLET (769px - 1024px)
+   Khu vực "Dịch vụ": Chuyển từ 4 Cột Desktop sang 2 Cột Tablet
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN CHO MOBILE (< 768px)
+   - Layout tổng thể: 2 cột Desktop (Sidebar + Main) thành 1 cột dọc
+   - Khu vực "Dịch vụ": 2 cột Tablet thành 1 Cột Mobile duy nhất
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Đưa Container Grid từ 2 cột Desktop về 1 cột dọc duy nhất */
+  .container {
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-md);
+  }
+
+  /* 2. Header gọn gàng hơn trên màn hình di động */
+  header {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-2xs);
+  }
+
+  header p {
+    font-size: 0.95rem;
+  }
+
+  /* 3. Sidebar (Thẻ thông tin cá nhân & Điều hướng) */
+  aside {
+    padding: var(--spacing-lg) var(--spacing-md);
+    gap: var(--spacing-lg);
+  }
+
+  .profile-card .avatar {
+    font-size: 2.8rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .profile-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .profile-card .role {
+    font-size: 0.9rem;
+  }
+
+  /* Chuyển Menu điều hướng thành dạng nút chạm (Touch-friendly Grid 2 cột) */
+  .sidebar-nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xs);
+  }
+
+  .sidebar-nav ul li {
+    margin-bottom: 0;
+  }
+
+  .sidebar-nav ul li:last-child {
+    grid-column: span 2;
+  }
+
+  .sidebar-nav ul li a {
+    text-align: center;
+    padding: var(--spacing-sm) var(--spacing-xs);
+    font-size: 0.9rem;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--gray-light);
+  }
+
+  .sidebar-nav ul li a:hover {
+    background-color: var(--primary-light);
+  }
+
+  /* 4. Main Content và các Content Box */
+  main {
+    gap: var(--spacing-md);
+  }
+
+  .content-box {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .content-box h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .about-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* 5. Thẻ Kỹ năng (Skills) */
+  .skills {
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) 0;
+  }
+
+  .skill {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.85rem;
+  }
+
+  /* 6. Dịch vụ (Services) - 1 CỘT TRÊN MOBILE */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .service-card {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+
+  /* 7. Danh sách dự án */
+  .project-list {
+    gap: var(--spacing-sm);
+  }
+
+  .project-list li {
+    padding: var(--spacing-md);
+  }
+
+  .project-list h3 {
+    font-size: 1.05rem;
+  }
+
+  .project-list p {
+    font-size: 0.9rem;
+  }
+
+  /* 8. Footer trên Mobile */
+  footer {
+    padding: var(--spacing-md);
+    font-size: 0.85rem;
+  }
+}
