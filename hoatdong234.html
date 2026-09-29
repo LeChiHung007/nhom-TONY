@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buổi 05 - Web Animations, AOS & Performance Optimization</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Thư viện AOS (Animate On Scroll) CSS qua CDN - Hoạt động 3 -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
+  <!-- File CSS tùy chỉnh -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ==================== HEADER & THANH ĐIỀU HƯỚNG ==================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <span class="logo-badge">LAB 05</span>
+        <span>Animation & Performance</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#activity-2">HĐ 2: Spinner</a></li>
+          <li><a href="#activity-3">HĐ 3: AOS Scroll</a></li>
+          <li><a href="#activity-4">HĐ 4: Refactoring</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero-section">
+    <div class="container" data-aos="fade-down" data-aos-duration="1000">
+      <div class="hero-tag">
+        <span class="dot"></span>
+        <span>Thực hành Buổi 05 - Tối ưu hóa UI/UX & Hiệu năng</span>
+      </div>
+      <h1 class="hero-title">
+        Làm chủ <span class="gradient-text">CSS Animation</span> & <br>Hiệu Năng Trình Duyệt
+      </h1>
+      <p class="hero-desc">
+        Trọn bộ 3 hoạt động thực hành: Tạo Spinner loading với @keyframes, tích hợp thư viện cuộn trang AOS,
+        và Refactor chuyển động sang GPU Compositor để chống giật lag trên thiết bị di động.
+      </p>
+      <div class="quick-stats">
+        <div class="stat-pill">
+          <span>⚡ HĐ 2:</span>
+          <strong>@keyframes Spinner</strong>
+        </div>
+        <div class="stat-pill">
+          <span>📜 HĐ 3:</span>
+          <strong>AOS Library CDN</strong>
+        </div>
+        <div class="stat-pill">
+          <span>🚀 HĐ 4:</span>
+          <strong>60 FPS GPU Transform</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- ==========================================================================
+         HOẠT ĐỘNG 2: "LOADING MASTER" - TẠO SPINNER (30 PHÚT)
+         ========================================================================== -->
+    <section id="activity-2" class="activity-section" data-aos="fade-up" data-aos-duration="900">
+      <header class="section-header">
+        <span class="activity-badge badge-act2">Hoạt động 2 • 30 phút</span>
+        <h2 class="section-title">"Loading Master" - Tạo Vòng Tròn Spinner</h2>
+        <p class="section-lead">
+          Sử dụng cú pháp <code>@keyframes</code> kết hợp <code>border-top-color</code> để tạo vòng tròn xoay 360 độ vô
+          hạn làm Loading indicator cho trang Portfolio.
+        </p>
+
+        <!-- Prompt mẫu từ đề bài -->
+        <div class="prompt-callout">
+          <span class="prompt-icon">💡</span>
+          <div>
+            <strong>Prompt mẫu:</strong>
+            <em>"Tạo một vòng tròn loading bằng CSS sử dụng animation xoay 360 độ vô hạn. Sử dụng border-top-color khác
+              với các phần còn lại để tạo hiệu ứng xoay."</em>
+          </div>
+        </div>
+      </header>
+
+      <!-- Danh sách Demo các kiểu Spinner -->
+      <div class="spinner-grid">
+        <!-- 1. Spinner chuẩn theo đúng yêu cầu đề bài -->
+        <div class="spinner-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="spinner-display">
+            <!-- Phần tử Spinner chuẩn -->
+            <div class="spinner-classic" role="status" aria-label="Đang tải dữ liệu"></div>
+          </div>
+          <div>
+            <h3>Spinner Chuẩn Đề Bài</h3>
+            <p>Viền xám mờ + <code>border-top-color</code> xanh cyan xoay liên tục 360°.</p>
+          </div>
+        </div>
+
+        <!-- 2. Spinner Neon Glow (Nâng cao cho Portfolio hiện đại) -->
+        <div class="spinner-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="spinner-display">
+            <div class="spinner-glow" role="status"></div>
+          </div>
+          <div>
+            <h3>Gradient Glow Spinner</h3>
+            <p>Hiệu ứng phát sáng neon tím - hồng phù hợp với giao diện Dark Mode cao cấp.</p>
+          </div>
+        </div>
+
+        <!-- 3. Spinner Vòng đôi ngược chiều -->
+        <div class="spinner-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="spinner-display">
+            <div class="spinner-double" role="status"></div>
+          </div>
+          <div>
+            <h3>Double Ring Spinner</h3>
+            <p>Hai vòng lồng nhau xoay đảo chiều qua pseudo-element <code>::before</code> & <code>::after</code>.</p>
+          </div>
+        </div>
+
+        <!-- 4. Tương tác Button có trạng thái Loading -->
+        <div class="spinner-card spinner-card-full" data-aos="zoom-in" data-aos-delay="400">
+          <div class="spinner-display">
+            <button type="button" class="btn-demo-load" id="btnInteractiveLoad" onclick="toggleButtonLoading(this)">
+              <span class="btn-spinner"></span>
+              <span class="btn-text">Bấm để tải</span>
+            </button>
+          </div>
+          <div>
+            <h3>Nút Bấm Loading Thực Tế</h3>
+            <p>Bấm thử nút trên để kích hoạt Spinner thu nhỏ ngay trong nút gửi dữ liệu.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Khối giải thích code chi tiết -->
+      <div class="code-explanation-box">
+        <h4>📝 Code CSS chính của Hoạt động 2</h4>
+        <pre><code>/* 1. Tạo hình tròn bằng border-radius: 50% và tạo vệt xoay bằng border-top-color */
+.spinner-classic {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.15); /* Vòng viền nền mờ */
+  border-top-color: #06b6d4;                    /* Vệt xoay màu nổi bật */
+  animation: spinner-rotate 1s linear infinite; /* Xoay đều vô hạn */
+}
+
+/* 2. Keyframes xoay 360 độ từ 0% đến 100% */
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}</code></pre>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         HOẠT ĐỘNG 3: "AOS - SCROLL REVEAL" (30 PHÚT)
+         ========================================================================== -->
+    <section id="activity-3" class="activity-section" data-aos="fade-up" data-aos-duration="900">
+      <header class="section-header">
+        <span class="activity-badge badge-act3">Hoạt động 3 • 30 phút</span>
+        <h2 class="section-title">"AOS - Scroll Reveal" - Hiệu Ứng Khi Cuộn Trang</h2>
+        <p class="section-lead">
+          Tích hợp thư viện AOS (Animate On Scroll) vào dự án qua CDN để khi người dùng cuộn chuột, các khối giao diện
+          sẽ xuất hiện sinh động (fade-in, slide-up, zoom).
+        </p>
+
+        <!-- Prompt mẫu từ đề bài -->
+        <div class="prompt-callout">
+          <span class="prompt-icon">💡</span>
+          <div>
+            <strong>Prompt mẫu:</strong>
+            <em>"Hướng dẫn tôi cách tích hợp thư viện AOS vào file HTML thông qua CDN và cách thêm thuộc tính 'data-aos'
+              vào các thẻ section để chúng hiện ra khi cuộn xuống."</em>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hướng dẫn tích hợp 2 bước -->
+      <div class="aos-guide-cards">
+        <div class="guide-step-card" data-aos="fade-right" data-aos-delay="100">
+          <div class="step-num">1</div>
+          <h4>Nhúng thư viện qua CDN</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">
+            Thêm thẻ link CSS vào <code>&lt;head&gt;</code> và thẻ script JS vào trước thẻ đóng
+            <code>&lt;/body&gt;</code>:
+          </p>
+          <pre><code>&lt;!-- Trong thẻ &lt;head&gt; --&gt;
+&lt;link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /&gt;
+
+&lt;!-- Trước thẻ đóng &lt;/body&gt; --&gt;
+&lt;script src="https://unpkg.com/aos@next/dist/aos.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  AOS.init({ duration: 800, once: false });
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <div class="guide-step-card" data-aos="fade-left" data-aos-delay="200">
+          <div class="step-num">2</div>
+          <h4>Gắn thuộc tính <code>data-aos</code></h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">
+            Thêm thuộc tính hoạt ảnh vào bất kỳ thẻ HTML nào bạn muốn tạo hiệu ứng khi cuộn:
+          </p>
+          <pre><code>&lt;!-- Hiện từ dưới lên --&gt;
+&lt;div data-aos="fade-up"&gt;Nội dung&lt;/div&gt;
+
+&lt;!-- Trượt từ trái sang kèm độ trễ --&gt;
+&lt;div data-aos="fade-right" data-aos-delay="200"&gt;Card&lt;/div&gt;
+
+&lt;!-- Phóng to dần --&gt;
+&lt;div data-aos="zoom-in" data-aos-duration="1000"&gt;Ảnh&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Showcase Demo thực tế các hiệu ứng AOS khi cuộn -->
+      <h3 style="font-size: 1.3rem; margin: 30px 0 16px;">Demo Các Khối Portfolio Ứng Dụng AOS</h3>
+      <div class="aos-showcase-grid">
+
+        <div class="aos-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="aos-item-icon">🚀</div>
+          <span class="aos-item-tag">data-aos="fade-up"</span>
+          <h3>Dự Án Web App</h3>
+          <p>Hiệu ứng mờ dần và trượt từ dưới lên trên. Thích hợp nhất cho các card sản phẩm, bài viết và tính năng.</p>
+        </div>
+
+        <div class="aos-item" data-aos="fade-down" data-aos-delay="200">
+          <div class="aos-item-icon">🎨</div>
+          <span class="aos-item-tag">data-aos="fade-down"</span>
+          <h3>UI/UX Design</h3>
+          <p>Hiệu ứng trượt từ trên xuống dưới, tạo cảm giác rơi nhẹ nhàng và tập trung thị giác người dùng.</p>
+        </div>
+
+        <div class="aos-item" data-aos="fade-right" data-aos-delay="300">
+          <div class="aos-item-icon">⚡</div>
+          <span class="aos-item-tag">data-aos="fade-right"</span>
+          <h3>Hiệu Năng Cao</h3>
+          <p>Trượt từ cạnh trái màn hình sang, cực kỳ thu hút ánh nhìn cho các điểm nhấn quan trọng.</p>
+        </div>
+
+        <div class="aos-item" data-aos="fade-left" data-aos-delay="400">
+          <div class="aos-item-icon">📱</div>
+          <span class="aos-item-tag">data-aos="fade-left"</span>
+          <h3>Responsive Mobile</h3>
+          <p>Trượt từ cạnh phải sang, kết hợp mượt mà với bố cục đa cột trên màn hình di động.</p>
+        </div>
+
+        <div class="aos-item" data-aos="zoom-in" data-aos-delay="500">
+          <div class="aos-item-icon">✨</div>
+          <span class="aos-item-tag">data-aos="zoom-in"</span>
+          <h3>Phóng To Tâm Điểm</h3>
+          <p>Khuếch đại kích thước từ nhỏ ra lớn, thường áp dụng cho avatar, hình ảnh minh họa hoặc huy hiệu giải
+            thưởng.</p>
+        </div>
+
+        <div class="aos-item" data-aos="flip-up" data-aos-delay="600">
+          <div class="aos-item-icon">💎</div>
+          <span class="aos-item-tag">data-aos="flip-up"</span>
+          <h3>Lật 3D Độc Đáo</h3>
+          <p>Hiệu ứng lật không gian 3 chiều ấn tượng, tôn lên vẻ chuyên nghiệp của trang Portfolio cá nhân.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         HOẠT ĐỘNG 4: "REFACTORING PERFORMANCE" (15 PHÚT)
+         ========================================================================== -->
+    <section id="activity-4" class="activity-section" data-aos="fade-up" data-aos-duration="900">
+      <header class="section-header">
+        <span class="activity-badge badge-act4">Hoạt động 4 • 15 phút</span>
+        <h2 class="section-title">"Refactoring Performance" - Tối Ưu Hóa Hiệu Năng</h2>
+        <p class="section-lead">
+          Hướng dẫn thay đổi thuộc tính chuyển động từ <code>top/left</code> sang <code>transform: translate</code> để
+          AI và lập trình viên sinh ra code có hiệu năng tối đa (không gây giật lag trên điện thoại).
+        </p>
+      </header>
+
+      <!-- Khối so sánh tương tác trực tiếp (Live Comparison) -->
+      <div class="comparison-box">
+        <h3 style="font-size: 1.3rem; margin-bottom: 8px;">So Sánh Trực Quan: Cách Cũ vs Sau Refactor</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">
+          Quan sát 2 đối tượng bên dưới: Khối đỏ di chuyển bằng <code>left</code> (bắt trình duyệt tính toán lại Layout
+          & Paint),
+          còn khối xanh di chuyển bằng <code>transform: translate</code> (chạy độc lập trên GPU Compositor).
+        </p>
+
+        <div class="comparison-grid">
+          <!-- Cột A: Cách cũ chưa tối ưu -->
+          <div class="method-column method-bad">
+            <span class="method-badge badge-danger">⚠️ Trước Refactor (Bad Practice)</span>
+            <h3>Sử dụng <code>top / left</code></h3>
+            <p class="method-desc">
+              Kích hoạt chu trình <strong>Layout (Reflow) &rarr; Repaint</strong> liên tục ở từng frame. Làm CPU quá tải
+              và gây giật khung hình (drop FPS) trên điện thoại.
+            </p>
+
+            <!-- Đường đua animation -->
+            <div class="track-container">
+              <span class="track-label">left: 10px &rarr; 80% (CPU Reflow)</span>
+              <div class="runner-bad" title="Chạy bằng thuộc tính left">🐢</div>
+            </div>
+
+            <pre><code>/* ❌ CHƯA TỐI ƯU: Thay đổi tọa độ layout */
+@keyframes move-bad {
+  0%   { left: 10px; }
+  100% { left: 80%; }
+}
+/* Trình duyệt phải tính toán lại kích thước 
+   và vị trí các phần tử xung quanh mỗi frame! */</code></pre>
+          </div>
+
+          <!-- Cột B: Cách mới sau tối ưu -->
+          <div class="method-column method-good">
+            <span class="method-badge badge-success">✅ Sau Refactor (Best Practice)</span>
+            <h3>Sử dụng <code>transform: translate</code></h3>
+            <p class="method-desc">
+              Chỉ kích hoạt tầng <strong>Compositing trên GPU</strong>. Không tính lại layout, không vẽ lại giao diện,
+              đảm bảo mượt mà 60 FPS chuẩn mực.
+            </p>
+
+            <!-- Đường đua animation -->
+            <div class="track-container">
+              <span class="track-label">transform: translateX() (GPU 60fps)</span>
+              <div class="runner-good" title="Chạy bằng transform: translateX">⚡</div>
+            </div>
+
+            <pre><code>/* ✅ TỐI ƯU: Xử lý trực tiếp trên GPU */
+@keyframes move-good {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(380px); }
+}
+/* GPU Compositor xử lý độc lập, 
+   tiết kiệm pin & siêu mượt trên Mobile! */</code></pre>
+          </div>
+        </div>
+
+        <!-- Bảng phân tích Pipeline Đồ Họa của Trình Duyệt -->
+        <div class="pipeline-table-container">
+          <table class="pipeline-table">
+            <thead>
+              <tr>
+                <th>Thuộc Tính CSS</th>
+                <th>Layout (Reflow)?</th>
+                <th>Repaint (Vẽ lại)?</th>
+                <th>GPU Compositing?</th>
+                <th>Đánh Giá Hiệu Năng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>top, left, right, bottom</code></td>
+                <td><span class="tag-metric tag-red">Có (Rất nặng)</span></td>
+                <td><span class="tag-metric tag-red">Có</span></td>
+                <td><span class="tag-metric tag-red">Không (CPU)</span></td>
+                <td>⚠️ Giật lag trên mobile, hao pin</td>
+              </tr>
+              <tr>
+                <td><code>width, height, margin, padding</code></td>
+                <td><span class="tag-metric tag-red">Có (Gây xô lệch)</span></td>
+                <td><span class="tag-metric tag-red">Có</span></td>
+                <td><span class="tag-metric tag-red">Không</span></td>
+                <td>⚠️ Tụt FPS nghiêm trọng</td>
+              </tr>
+              <tr>
+                <td><code>transform: translate(), scale(), rotate()</code></td>
+                <td><span class="tag-metric tag-green">Bỏ qua (0ms)</span></td>
+                <td><span class="tag-metric tag-green">Bỏ qua</span></td>
+                <td><span class="tag-metric tag-green">Có (GPU riêng)</span></td>
+                <td>🚀 Chuẩn 60 FPS, cực kỳ mượt</td>
+              </tr>
+              <tr>
+                <td><code>opacity</code></td>
+                <td><span class="tag-metric tag-green">Bỏ qua</span></td>
+                <td><span class="tag-metric tag-green">Bỏ qua</span></td>
+                <td><span class="tag-metric tag-green">Có (GPU riêng)</span></td>
+                <td>🚀 Hiệu ứng mờ dần hoàn hảo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>Buổi 05: CSS Animation, AOS Scroll Reveal & Performance Refactoring</strong></p>
+      <p style="font-size: 0.85rem; color: var(--text-dim);">
+        Đã tích hợp đầy đủ 3 Hoạt động trong 1 file HTML duy nhất và liên kết với file <code>style.css</code>.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <!-- 1. AOS JavaScript Library qua CDN -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <!-- 2. Khởi tạo AOS & Script bổ trợ tương tác -->
+  <script>
+    // Khởi tạo thư viện AOS (Hoạt động 3)
+    AOS.init({
+      duration: 800,        // Thời gian diễn ra hiệu ứng (ms)
+      easing: 'ease-out-cubic', // Gia tốc chuyển động tự nhiên
+      once: false,          // false: chạy lại hiệu ứng khi cuộn lên/xuống nhiều lần
+      mirror: true,         // Kích hoạt khi cuộn ngược lên
+      offset: 60            // Khoảng cách offset trước khi kích hoạt (px)
+    });
+
+    // Hàm chuyển đổi trạng thái loading cho nút bấm (Hoạt động 2 Demo)
+    function toggleButtonLoading(btn) {
+      if (btn.classList.contains('is-loading')) return;
+
+      btn.classList.add('is-loading');
+      const textSpan = btn.querySelector('.btn-text');
+      const originalText = textSpan.textContent;
+      textSpan.textContent = 'Đang tải...';
+
+      // Giả lập tải xong sau 2 giây
+      setTimeout(() => {
+        btn.classList.remove('is-loading');
+        textSpan.textContent = 'Thành công! ✓';
+        setTimeout(() => {
+          textSpan.textContent = originalText;
+        }, 1500);
+      }, 2000);
+    }
+  </script>
+
+</body>
+
+</html>
