@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Motion Lab | Hoạt động thực hành</title>
+
+    <!-- AOS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+    >
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* ==============================
+           RESET
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #08111f;
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* ==============================
+           BACKGROUND
+        ============================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(59, 130, 246, 0.18),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 85%,
+                    rgba(139, 92, 246, 0.16),
+                    transparent 30%
+                );
+            z-index: -1;
+        }
+
+        /* ==============================
+           HEADER
+        ============================== */
+
+        header {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #93c5fd;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            margin-bottom: 22px;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            background: #38bdf8;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #38bdf8;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            background: linear-gradient(
+                135deg,
+                #ffffff,
+                #93c5fd,
+                #a78bfa
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .header-description {
+            max-width: 720px;
+            margin: auto;
+            color: #94a3b8;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* ==============================
+           MAIN
+        ============================== */
+
+        main {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
+
+        .activities {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        /* ==============================
+           CARD
+        ============================== */
+
+        .activity {
+            position: relative;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+            background: rgba(15, 23, 42, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            overflow: hidden;
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        .activity:hover {
+            transform: translateY(-5px);
+            border-color: rgba(96, 165, 250, 0.35);
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .activity-number {
+            position: absolute;
+            top: 20px;
+            right: 22px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .activity-icon {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.12);
+            color: #60a5fa;
+            font-size: 20px;
+        }
+
+        .activity h2 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .activity-description {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        /* ==============================
+           DEMO AREA
+        ============================== */
+
+        .demo {
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border-radius: 16px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15, 23, 42, 0.95),
+                    rgba(30, 41, 59, 0.7)
+                );
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 18px;
+        }
+
+        .code-label {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.04);
+            color: #67e8f9;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+        }
+
+        /* ==============================
+           ACTIVITY 1
+           MICRO-INTERACTIONS
+        ============================== */
+
+        .send-button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            padding: 15px 26px;
+
+            border: 0;
+            border-radius: 12px;
+
+            color: white;
+            background: linear-gradient(
+                135deg,
+                #3b82f6,
+                #6366f1
+            );
+
+            font-size: 15px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 18px rgba(59, 130, 246, 0.3);
+
+            transition:
+                transform 0.3s cubic-bezier(
+                    0.34,
+                    1.56,
+                    0.64,
+                    1
+                ),
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .send-button:hover {
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #4f46e5
+            );
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 28px rgba(59, 130, 246, 0.42);
+        }
+
+        .send-button:active {
+            transform: translateY(0) scale(0.94);
+
+            box-shadow:
+                0 3px 8px rgba(59, 130, 246, 0.25);
+        }
+
+        /* ==============================
+           ACTIVITY 2
+           LOADING SPINNER
+        ============================== */
+
+        .spinner-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .spinner {
+            width: 65px;
+            height: 65px;
+
+            border: 6px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #38bdf8;
+
+            border-radius: 50%;
+
+            animation:
+                spinner-rotate 0.85s linear infinite;
+
+            box-shadow:
+                0 0 25px rgba(56, 189, 248, 0.2);
+        }
+
+        @keyframes spinner-rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-text {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        /* ==============================
+           ACTIVITY 3
+           AOS
+        ============================== */
+
+        .reveal-container {
+            width: 100%;
+            display: grid;
+            gap: 12px;
+        }
+
+        .reveal-item {
+            padding: 17px 20px;
+            border-radius: 12px;
+
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+
+            color: #c7d2fe;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .reveal-item span {
+            color: #818cf8;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            margin-left: 8px;
+        }
+
+        /* ==============================
+           ACTIVITY 4
+           PERFORMANCE
+        ============================== */
+
+        .performance-demo {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .performance-box {
+            min-height: 125px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .performance-box small {
+            margin-top: 8px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            font-weight: 400;
+            opacity: 0.75;
+        }
+
+        /* Cách cũ */
+        .legacy {
+            color: #fca5a5;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+
+            position: relative;
+
+            transition: top 0.3s ease;
+        }
+
+        .legacy:hover {
+            top: -8px;
+        }
+
+        /* Cách tối ưu */
+        .optimized {
+            color: #6ee7b7;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+
+            transition:
+                transform 0.3s ease;
+        }
+
+        .optimized:hover {
+            transform: translateY(-8px);
+        }
+
+        /* ==============================
+           TECH INFO
+        ============================== */
+
+        .tech-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+
+            padding: 12px 14px;
+
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.035);
+
+            color: #64748b;
+
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+        }
+
+        .tech-info strong {
+            color: #38bdf8;
+            font-weight: 500;
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            width: min(1100px, 92%);
+            margin: 70px auto 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+            text-align: center;
+
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* ==============================
+           RESPONSIVE
+        ============================== */
+
+        @media (max-width: 800px) {
+
+            .activities {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding-top: 55px;
+            }
+
+            .performance-demo {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            body {
+                font-size: 14px;
+            }
+
+            header {
+                padding: 45px 0;
+            }
+
+            .activity {
+                padding: 20px;
+                border-radius: 18px;
+            }
+
+            .demo {
+                padding: 20px;
+            }
+
+            .tech-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* ==============================
+           ACCESSIBILITY
+        ============================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ==============================
+         HEADER
+    ============================== -->
+
+    <header data-aos="fade-down">
+
+        <div class="badge">
+            <span class="badge-dot"></span>
+            HỌC PHẦN 111101 · THIẾT KẾ WEB
+        </div>
+
+        <h1>CSS Motion Lab</h1>
+
+        <p class="header-description">
+            Thực hành Micro-interactions, CSS Animation,
+            AOS Scroll Reveal và kỹ thuật tối ưu hiệu năng
+            với Transform.
+        </p>
+
+    </header>
+
+
+    <!-- ==============================
+         MAIN
+    ============================== -->
+
+    <main>
+
+        <div class="activities">
+
+
+            <!-- ==========================
+                 HOẠT ĐỘNG 1
+            =========================== -->
+
+            <section
+                class="activity"
+                data-aos="fade-up"
+            >
+
+                <span class="activity-number">
+                    01 / 04
+                </span>
+
+                <div class="activity-header">
+
+                    <div class="activity-icon">
+                        ↗
+                    </div>
+
+                    <h2>
+                        Micro-interactions
+                    </h2>
+
+                </div>
+
+                <p class="activity-description">
+                    Nút "Gửi tin nhắn" thay đổi màu,
+                    nâng lên 3px và tăng bóng đổ khi
+                    hover. Khi click, nút thu nhỏ tạo
+                    cảm giác đã được nhấn.
+                </p>
+
+                <div class="demo">
+
+                    <button
+                        class="send-button"
+                        type="button"
+                    >
+
+                        <span>
+                            Gửi tin nhắn
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+                <div class="tech-info">
+
+                    <span>
+                        transition
+                    </span>
+
+                    <strong>
+                        cubic-bezier()
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================
+                 HOẠT ĐỘNG 2
+            =========================== -->
+
+            <section
+                class="activity"
+                data-aos="fade-up"
+                data-aos-delay="100"
+            >
+
+                <span class="activity-number">
+                    02 / 04
+                </span>
+
+                <div class="activity-header">
+
+                    <div class="activity-icon">
+                        ◌
+                    </div>
+
+                    <h2>
+                        Loading Master
+                    </h2>
+
+                </div>
+
+                <p class="activity-description">
+                    Tạo Loading Indicator bằng
+                    @keyframes. Vòng tròn xoay 360°
+                    liên tục và sử dụng
+                    border-top-color để tạo điểm nhấn.
+                </p>
+
+                <div class="demo">
+
+                    <div class="spinner-wrapper">
+
+                        <div
+                            class="spinner"
+                            aria-label="Loading"
+                        ></div>
+
+                        <div class="loading-text">
+                            Loading...
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="tech-info">
+
+                    <span>
+                        animation
+                    </span>
+
+                    <strong>
+                        360deg · infinite
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================
+                 HOẠT ĐỘNG 3
+            =========================== -->
+
+            <section
+                class="activity"
+                data-aos="fade-up"
+                data-aos-delay="200"
+            >
+
+                <span class="activity-number">
+                    03 / 04
+                </span>
+
+                <div class="activity-header">
+
+                    <div class="activity-icon">
+                        ↓
+                    </div>
+
+                    <h2>
+                        AOS Scroll Reveal
+                    </h2>
+
+                </div>
+
+                <p class="activity-description">
+                    Tích hợp thư viện AOS thông qua CDN.
+                    Các thành phần sử dụng data-aos sẽ
+                    xuất hiện khi người dùng cuộn đến
+                    vị trí tương ứng.
+                </p>
+
+                <div class="demo">
+
+                    <div class="reveal-container">
+
+                        <div
+                            class="reveal-item"
+                            data-aos="fade-up"
+                            data-aos-duration="700"
+                        >
+                            Fade Up
+                            <span>
+                                data-aos="fade-up"
+                            </span>
+                        </div>
+
+                        <div
+                            class="reveal-item"
+                            data-aos="fade-right"
+                            data-aos-duration="700"
+                            data-aos-delay="150"
+                        >
+                            Slide Right
+                            <span>
+                                data-aos="fade-right"
+                            </span>
+                        </div>
+
+                        <div
+                            class="reveal-item"
+                            data-aos="zoom-in"
+                            data-aos-duration="700"
+                            data-aos-delay="300"
+                        >
+                            Zoom In
+                            <span>
+                                data-aos="zoom-in"
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="tech-info">
+
+                    <span>
+                        library
+                    </span>
+
+                    <strong>
+                        AOS v2.3.4
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================
+                 HOẠT ĐỘNG 4
+            =========================== -->
+
+            <section
+                class="activity"
+                data-aos="fade-up"
+                data-aos-delay="300"
+            >
+
+                <span class="activity-number">
+                    04 / 04
+                </span>
+
+                <div class="activity-header">
+
+                    <div class="activity-icon">
+                        ⚡
+                    </div>
+
+                    <h2>
+                        Refactoring Performance
+                    </h2>
+
+                </div>
+
+                <p class="activity-description">
+                    So sánh cách tạo chuyển động bằng
+                    top với cách tối ưu bằng
+                    transform: translateY().
+                    Cách transform phù hợp hơn cho
+                    các hiệu ứng chuyển động mượt.
+                </p>
+
+                <div class="demo">
+
+                    <div class="performance-demo">
+
+                        <!-- Cách cũ -->
+
+                        <div class="performance-box legacy">
+
+                            <span>
+                                Legacy
+                            </span>
+
+                            <small>
+                                top: -8px
+                            </small>
+
+                        </div>
+
+
+                        <!-- Cách tối ưu -->
+
+                        <div class="performance-box optimized">
+
+                            <span>
+                                Optimized
+                            </span>
+
+                            <small>
+                                transform
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="tech-info">
+
+                    <span>
+                        recommended
+                    </span>
+
+                    <strong>
+                        transform: translateY()
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        <p>
+            CSS Motion Lab · Web Design Practice · 2026
+        </p>
+
+    </footer>
+
+
+    <!-- ==============================
+         AOS JAVASCRIPT
+    ============================== -->
+
+    <script
+        src="https://unpkg.com/aos@2.3.4/dist/aos.js">
+    </script>
+
+    <script>
+
+        AOS.init({
+
+            duration: 800,
+
+            easing: "ease-out-cubic",
+
+            once: true,
+
+            offset: 80
+
+        });
+
+    </script>
+
+</body>
+</html>
