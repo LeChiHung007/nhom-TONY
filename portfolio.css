@@ -1,0 +1,1140 @@
+/* ==========================================================================
+   DESIGN SYSTEM - CẤU HÌNH BIẾN CSS TOÀN CỤC TẠI :ROOT
+   Bao gồm: Mã màu, Khoảng cách (Spacing), Bo góc (Radius), Đổ bóng (Shadow),
+            Kích thước bố cục (Layout) và Hiệu ứng chuyển động (Transitions)
+   ========================================================================== */
+
+:root {
+  /* ==========================================================================
+     1. HỆ THỐNG MÃ MÀU (COLOR SYSTEM TOKENS)
+     ========================================================================== */
+
+  /* Màu chủ đạo (Primary Color) */
+  --primary: #0078d7;
+  --primary-hover: #005a9e;
+  --primary-light: #e0f2fe;
+  --primary-rgb: 0, 120, 215;
+
+  /* Màu phụ (Secondary Color) */
+  --secondary: #10b981;
+  --secondary-hover: #059669;
+  --secondary-light: #ecfdf5;
+  --secondary-rgb: 16, 185, 129;
+
+  /* 3 Mức độ xám chuẩn phân cấp thị giác */
+  --gray-light: #e2e8f0;      /* Mức 1 - Xám nhạt: Đường viền (border), divider */
+  --gray-medium: #64748b;     /* Mức 2 - Xám trung bình: Text phụ, icon, ghi chú */
+  --gray-dark: #1e293b;       /* Mức 3 - Xám đậm: Tiêu đề, chữ chính, footer */
+
+  /* Màu nền (Backgrounds) */
+  --bg-color: #f0f2f5;        /* Nền tổng thể trang web (body) */
+  --bg-surface: #ffffff;      /* Nền thẻ / khối nội dung (card/surface) */
+  --bg-subtle: #f8fafc;       /* Nền khối con, item phụ */
+
+  /* Màu trung tính đặc biệt */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Aliases dự phòng tương thích ngược */
+  --primary-color: var(--primary);
+  --secondary-color: var(--secondary);
+  --bg-main: var(--bg-color);
+  --bg-card: var(--bg-surface);
+  --text-main: var(--gray-dark);
+  --text-muted: var(--gray-medium);
+  --border-color: var(--gray-light);
+
+  /* ==========================================================================
+     2. HỆ THỐNG KHOẢNG CÁCH (SPACING SYSTEM TOKENS)
+     Chuẩn hóa theo hệ thống 4px / 8px Grid System
+     ========================================================================== */
+  --spacing-2xs: 4px;         /* Khoảng cách siêu nhỏ: viền sát, icon margin */
+  --spacing-xs:  8px;         /* Khoảng cách nhỏ: gap nhỏ, margin text, padding nút */
+  --spacing-sm:  12px;        /* Khoảng cách vừa nhỏ: gap danh sách, padding gọn */
+  --spacing-md:  16px;        /* Khoảng cách tiêu chuẩn: padding card con, gap khối */
+  --spacing-lg:  20px;        /* Khoảng cách lớn: padding card chính, gap grid */
+  --spacing-xl:  24px;        /* Khoảng cách rất lớn: padding sidebar, aside gap */
+  --spacing-2xl: 32px;        /* Khoảng cách đặc biệt: padding header, content-box */
+
+  /* ==========================================================================
+     3. HỆ THỐNG BO GÓC (BORDER RADIUS TOKENS)
+     ========================================================================== */
+  --radius-sm:   6px;         /* Bo góc nhỏ: Nút menu, item dự án */
+  --radius-md:   10px;        /* Bo góc vừa: Thẻ dịch vụ */
+  --radius-lg:   12px;        /* Bo góc lớn: Header, Aside, Content Box, Footer */
+  --radius-full: 9999px;      /* Bo tròn dạng viên thuốc (Pill): Thẻ Kỹ năng */
+
+  /* ==========================================================================
+     4. HỆ THỐNG ĐỔ BÓNG (BOX SHADOW TOKENS)
+     ========================================================================== */
+  --shadow-sm:      0 2px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md:      0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-lg:      0 8px 20px rgba(0, 0, 0, 0.08);
+  --shadow-primary: 0 4px 15px rgba(var(--primary-rgb), 0.2);
+  --shadow-hover:   0 6px 16px rgba(var(--primary-rgb), 0.25);
+
+  /* ==========================================================================
+     5. KÍCH THƯỚC BỐ CỤC (LAYOUT SIZING TOKENS)
+     ========================================================================== */
+  --container-max-width: 1200px;
+  --sidebar-width:       250px;
+
+  /* ==========================================================================
+     6. HIỆU ỨNG CHUYỂN ĐỘNG (TRANSITION TOKENS)
+     ========================================================================== */
+  --transition-fast:   all 0.2s ease;
+  --transition-normal: all 0.3s ease;
+}
+
+/* ==========================================================================
+   CSS RESET & CẤU HÌNH CƠ BẢN
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f1f5f9;
+  /* Developer Tech Matrix Grid & Ambient Aurora Glow */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 120, 215, 0.09) 0px, transparent 50%),
+    radial-gradient(at 100% 20%, rgba(16, 185, 129, 0.07) 0px, transparent 45%),
+    radial-gradient(at 50% 90%, rgba(99, 102, 241, 0.06) 0px, transparent 50%),
+    linear-gradient(to right, rgba(0, 120, 215, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 120, 215, 0.06) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+  background-attachment: fixed;
+  color: var(--gray-dark);
+  line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Watermark code </> chìm mờ ảo ở góc trái màn hình chuẩn lập trình viên */
+body::before {
+  content: "</>";
+  position: fixed;
+  bottom: 30px;
+  left: 20px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 12rem;
+  font-weight: 900;
+  color: rgba(0, 120, 215, 0.035);
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Watermark { code } chìm ở góc phải trên */
+body::after {
+  content: "{ dev }";
+  position: fixed;
+  top: 70px;
+  right: 30px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 6rem;
+  font-weight: 800;
+  color: rgba(0, 120, 215, 0.03);
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+}
+
+/* ==========================================================================
+   LAYOUT GRID TỔNG THỂ (DESKTOP)
+   ========================================================================== */
+
+.container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  gap: var(--spacing-lg);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+header {
+  grid-area: header;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background-size: 200% 200%;
+  color: var(--color-white);
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition-normal);
+  animation: gradientShift 8s ease infinite;
+}
+
+header:hover {
+  transform: scale(0.99);
+  box-shadow: var(--shadow-hover);
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+header p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+.header-top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--spacing-sm);
+}
+
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--color-white);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+  transition: var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   SIDEBAR (ASIDE)
+   ========================================================================== */
+
+aside {
+  grid-area: sidebar;
+  background: var(--bg-surface);
+  border: 1px solid var(--gray-light);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  height: fit-content;
+}
+
+/* [Hiệu ứng 2: CARD FLIP EFFECT - lật rotateY(180deg) khi hover] */
+.profile-card {
+  perspective: 1000px;
+  height: 200px;
+}
+
+.card-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.profile-card:hover .card-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.card-flip-front,
+.card-flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--gray-light);
+}
+
+.card-flip-front {
+  background: var(--bg-subtle);
+}
+
+.card-flip-front .avatar {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-2xs);
+}
+
+.card-flip-front h3 {
+  font-size: 1.2rem;
+  color: var(--gray-dark);
+}
+
+.card-flip-front .role {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.flip-hint {
+  font-size: 0.72rem;
+  color: var(--gray-medium);
+  margin-top: 6px;
+}
+
+.card-flip-back {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: var(--color-white);
+  transform: rotateY(180deg);
+  gap: 6px;
+  box-shadow: var(--shadow-md);
+}
+
+.card-flip-back h4 {
+  font-size: 0.95rem;
+  color: var(--color-white);
+  margin-bottom: 4px;
+}
+
+.card-flip-back p {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.sidebar-nav h4,
+.sidebar-info h4 {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--gray-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Khi bấm vào nút hamburger: Menu trượt mở ra mượt mà */
+.menu-checkbox:checked ~ #nav-list {
+  max-height: 350px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: var(--spacing-sm);
+}
+
+.sidebar-nav ul li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.sidebar-nav ul li a {
+  color: var(--gray-dark);
+  text-decoration: none;
+  font-weight: 500;
+  display: block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.sidebar-nav ul li a:hover,
+.sidebar-nav ul li a.active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.sidebar-info p {
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-2xs);
+  color: var(--gray-medium);
+}
+
+/* ==========================================================================
+   MAIN CONTENT
+   ========================================================================== */
+
+main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.content-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--gray-light);
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+}
+
+.content-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.content-box h2 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--gray-light);
+  padding-bottom: var(--spacing-xs);
+}
+
+.about-desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--gray-dark);
+}
+
+/* ==========================================================================
+   KỸ NĂNG (SKILLS - FLEXBOX)
+   ========================================================================== */
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+  padding: var(--spacing-sm) 0;
+}
+
+.skill {
+  background-color: var(--primary);
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-primary);
+  transition: var(--transition-normal);
+  cursor: default;
+}
+
+.skill:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ==========================================================================
+   DỊCH VỤ (SERVICES - CSS GRID)
+   Desktop (> 1024px): 4 CỘT
+   ========================================================================== */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+.service-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg) var(--spacing-sm);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition-normal);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-hover);
+  background: var(--bg-surface);
+}
+
+.service-icon {
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.service-card h3 {
+  font-size: 1.05rem;
+  color: var(--gray-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+.service-card p {
+  font-size: 0.88rem;
+  color: var(--gray-medium);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   DỰ ÁN (PROJECTS)
+   ========================================================================== */
+
+.project-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.project-list li {
+  background: var(--bg-subtle);
+  border: 1px solid var(--gray-light);
+  border-left: 4px solid var(--primary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.project-list li:hover {
+  transform: translateX(5px);
+  border-left-color: var(--secondary);
+  box-shadow: var(--shadow-md);
+}
+
+.project-list h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-2xs);
+  color: var(--gray-dark);
+}
+
+.project-list p {
+  font-size: 0.95rem;
+  color: var(--gray-medium);
+}
+
+/* ==========================================================================
+   LIÊN HỆ & LIÊN KẾT
+   ========================================================================== */
+
+.content-box a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.content-box a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+footer {
+  grid-area: footer;
+  background: var(--gray-dark);
+  color: var(--gray-light);
+  border-top: 3px solid var(--primary);
+  text-align: center;
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN CHO TABLET (769px - 1024px)
+   Khu vực "Dịch vụ": Chuyển từ 4 Cột Desktop sang 2 Cột Tablet
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN CHO MOBILE (< 768px)
+   - Layout tổng thể: 2 cột Desktop (Sidebar + Main) thành 1 cột dọc
+   - Khu vực "Dịch vụ": 2 cột Tablet thành 1 Cột Mobile duy nhất
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Đưa Container Grid từ 2 cột Desktop về 1 cột dọc duy nhất */
+  .container {
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-md);
+  }
+
+  /* 2. Header gọn gàng hơn trên màn hình di động */
+  header {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-2xs);
+  }
+
+  header p {
+    font-size: 0.95rem;
+  }
+
+  /* 3. Sidebar (Thẻ thông tin cá nhân & Điều hướng) */
+  aside {
+    padding: var(--spacing-lg) var(--spacing-md);
+    gap: var(--spacing-lg);
+  }
+
+  .profile-card .avatar {
+    font-size: 2.8rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .profile-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .profile-card .role {
+    font-size: 0.9rem;
+  }
+
+  /* Chuyển Menu điều hướng thành dạng nút chạm (Touch-friendly Grid 2 cột) */
+  .sidebar-nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xs);
+  }
+
+  .sidebar-nav ul li {
+    margin-bottom: 0;
+  }
+
+  .sidebar-nav ul li:last-child {
+    grid-column: span 2;
+  }
+
+  .sidebar-nav ul li a {
+    text-align: center;
+    padding: var(--spacing-sm) var(--spacing-xs);
+    font-size: 0.9rem;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--gray-light);
+  }
+
+  .sidebar-nav ul li a:hover {
+    background-color: var(--primary-light);
+  }
+
+  /* 4. Main Content và các Content Box */
+  main {
+    gap: var(--spacing-md);
+  }
+
+  .content-box {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .content-box h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .about-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* 5. Thẻ Kỹ năng (Skills) */
+  .skills {
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) 0;
+  }
+
+  .skill {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.85rem;
+  }
+
+  /* 6. Dịch vụ (Services) - 1 CỘT TRÊN MOBILE */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .service-card {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+
+  /* 7. Danh sách dự án */
+  .project-list {
+    gap: var(--spacing-sm);
+  }
+
+  .project-list li {
+    padding: var(--spacing-md);
+  }
+
+  .project-list h3 {
+    font-size: 1.05rem;
+  }
+
+  .project-list p {
+    font-size: 0.9rem;
+  }
+
+  /* 8. Footer trên Mobile */
+  footer {
+    padding: var(--spacing-md);
+    font-size: 0.85rem;
+  }
+
+  /* Tương tác Mobile cho Hamburger Menu */
+  .sidebar-nav ul {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  }
+
+  .menu-checkbox:checked ~ #nav-list {
+    max-height: 350px;
+    opacity: 1;
+    margin-top: var(--spacing-sm);
+  }
+}
+
+/* ==========================================================================
+   CÁC HIỆU ỨNG TƯƠNG TÁC CHUYÊN NGHIỆP (BUỔI 5 + 6 CSS CHALLENGES)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   [Hiệu ứng 1: FLOATING ACTION BUTTON (FAB) - NÚT TRÒN "LIÊN HỆ" CỐ ĐỊNH GÓC MÀN HÌNH]
+   -------------------------------------------------------------------------- */
+.fab-contact {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: var(--color-white);
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.4);
+  animation: fabPulse 2s infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fab-contact:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.55);
+  color: var(--color-white);
+}
+
+.fab-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.fab-text {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+@keyframes fabPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(var(--primary-rgb), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   [Hiệu ứng 3: TYPING EFFECT BẰNG CSS THUẦN - KHÔNG DÙNG JAVASCRIPT]
+   -------------------------------------------------------------------------- */
+.typing-container {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-xs);
+}
+
+.typing-text {
+  display: inline-block;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-white);
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--color-white);
+  width: 0;
+  /* 28 ký tự tính cả 3 dấu chấm: "Tôi là một Web Developer..." */
+  animation:
+    typingText 4s steps(28, end) infinite alternate,
+    blinkCaret 0.75s step-end infinite;
+}
+
+@keyframes typingText {
+  0% { width: 0; }
+  50%, 100% { width: 28ch; }
+}
+
+@keyframes blinkCaret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--color-white); }
+}
+
+/* --------------------------------------------------------------------------
+   [Hiệu ứng 4: PARALLAX IMAGE BANNER - BACKGROUND-ATTACHMENT: FIXED]
+   -------------------------------------------------------------------------- */
+.parallax-banner {
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)),
+    url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: var(--radius-lg);
+  padding: 55px 24px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-white);
+  box-shadow: var(--shadow-md);
+  margin: var(--spacing-sm) 0;
+}
+
+.parallax-overlay h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.parallax-overlay p {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.parallax-overlay code {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* --------------------------------------------------------------------------
+   [Hiệu ứng 5: MODERN HAMBURGER MENU BIẾN ĐỔI THÀNH 'X' BẰNG CSS TRANSITIONS]
+   -------------------------------------------------------------------------- */
+.sidebar-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.sidebar-header-row h4 {
+  font-size: 1rem;
+  color: var(--gray-medium);
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.menu-checkbox {
+  display: none;
+}
+
+.hamburger-btn {
+  width: 36px;
+  height: 36px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.hamburger-btn:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+}
+
+.hamburger-btn .bar {
+  width: 20px;
+  height: 2.5px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  transform-origin: center;
+}
+
+/* Biến đổi 3 gạch thành dấu 'X' mượt mà khi người dùng mở Menu */
+.menu-checkbox:checked ~ .sidebar-header-row .hamburger-btn .bar-1,
+.menu-checkbox:checked + .hamburger-btn .bar-1 {
+  transform: translateY(7.5px) rotate(45deg);
+}
+
+.menu-checkbox:checked ~ .sidebar-header-row .hamburger-btn .bar-2,
+.menu-checkbox:checked + .hamburger-btn .bar-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-checkbox:checked ~ .sidebar-header-row .hamburger-btn .bar-3,
+.menu-checkbox:checked + .hamburger-btn .bar-3 {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* --------------------------------------------------------------------------
+   [Hiệu ứng 6: SKILL BAR ANIMATION - CHẠY TỪ 0% ĐẾN ĐÍCH KHI TẢI TRANG]
+   -------------------------------------------------------------------------- */
+.skill-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px dashed var(--gray-light);
+}
+
+.skill-bar-item {
+  width: 100%;
+}
+
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gray-dark);
+  margin-bottom: 6px;
+}
+
+.skill-bar-track {
+  width: 100%;
+  height: 8px;
+  background: var(--gray-light);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, #38bdf8, var(--primary));
+}
+
+.fill-html {
+  width: 90%;
+  animation: loadFillHtml 1.5s cubic-bezier(0.1, 0.45, 0.1, 1) forwards;
+}
+
+.fill-css {
+  width: 85%;
+  animation: loadFillCss 1.5s cubic-bezier(0.1, 0.45, 0.1, 1) forwards;
+}
+
+.fill-js {
+  width: 80%;
+  animation: loadFillJs 1.5s cubic-bezier(0.1, 0.45, 0.1, 1) forwards;
+}
+
+@keyframes loadFillHtml {
+  from { width: 0%; }
+  to { width: 90%; }
+}
+
+@keyframes loadFillCss {
+  from { width: 0%; }
+  to { width: 85%; }
+}
+
+@keyframes loadFillJs {
+  from { width: 0%; }
+  to { width: 80%; }
+}
+
+/* ==========================================================================
+   CHẾ ĐỘ SÁNG / TỐI (DARK MODE & LIGHT MODE SYSTEM)
+   ========================================================================== */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  /* Ghi đè biến CSS Design System sang bảng màu Dark Theme */
+  --bg-color: #080c14;
+  --bg-surface: #131c2e;
+  --bg-subtle: #0d1524;
+  --gray-dark: #f8fafc;
+  --gray-medium: #94a3b8;
+  --gray-light: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #1e293b;
+  --primary-light: rgba(56, 189, 248, 0.15);
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.55);
+
+  /* Developer Cyber Matrix Grid cho Dark Mode */
+  background-color: #070b14;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 15%, rgba(139, 92, 246, 0.12) 0px, transparent 45%),
+    radial-gradient(at 50% 85%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+    linear-gradient(to right, rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+  background-attachment: fixed;
+}
+
+body.dark-mode::before {
+  color: rgba(56, 189, 248, 0.04);
+}
+
+body.dark-mode::after {
+  color: rgba(56, 189, 248, 0.035);
+}
+
+.content-box,
+aside {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body.dark-mode .content-box,
+body.dark-mode aside {
+  background: rgba(19, 28, 46, 0.92);
+  border-color: var(--gray-light);
+  color: var(--gray-dark);
+}
+
+body.dark-mode .about-desc,
+body.dark-mode .sidebar-info p {
+  color: var(--gray-medium);
+}
+
+body.dark-mode .card-flip-front {
+  background: var(--bg-surface);
+  border-color: var(--gray-light);
+}
+
+body.dark-mode .card-flip-front h3 {
+  color: var(--gray-dark);
+}
+
+body.dark-mode .sidebar-nav ul li a {
+  color: var(--gray-dark);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--gray-light);
+}
+
+body.dark-mode .sidebar-nav ul li a:hover,
+body.dark-mode .sidebar-nav ul li a.active {
+  background-color: var(--primary-light);
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+body.dark-mode .hamburger-btn {
+  background: var(--bg-surface);
+  border-color: var(--gray-light);
+}
+
+body.dark-mode .hamburger-btn .bar {
+  background-color: #38bdf8;
+}
+
+body.dark-mode .service-card,
+body.dark-mode .project-list li {
+  background: var(--bg-surface);
+  border-color: var(--gray-light);
+}
+
+body.dark-mode .service-card h3,
+body.dark-mode .project-list h3 {
+  color: var(--gray-dark);
+}
+
+body.dark-mode .service-card p,
+body.dark-mode .project-list p {
+  color: var(--gray-medium);
+}
+
+body.dark-mode .service-card:hover,
+body.dark-mode .project-list li:hover {
+  background: var(--bg-subtle);
+  border-color: #38bdf8;
+}
+
+body.dark-mode .skill-bar-track {
+  background: #334155;
+}
+
+body.dark-mode footer {
+  background: #020617;
+  border-top-color: #38bdf8;
+  color: var(--gray-medium);
+}

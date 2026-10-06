@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio của Hưng - Coder</title>
+  <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header tích hợp [Nút chỉnh sáng tối] và [Hiệu ứng 3: TYPING EFFECT bằng CSS thuần] -->
+    <header>
+      <div class="header-top-bar">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Chuyển chế độ sáng/tối" title="Chuyển chế độ sáng/tối">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Chế độ tối</span>
+        </button>
+      </div>
+      <h1>Lê Chí Hưng</h1>
+      <div class="typing-container">
+        <p class="typing-text">Tôi là một Web Developer...</p>
+      </div>
+    </header>
+
+    <aside>
+      <!-- [Hiệu ứng 2: CARD FLIP EFFECT - lật rotateY(180deg) khi hover] -->
+      <div class="profile-card">
+        <div class="card-flip-inner">
+          <div class="card-flip-front">
+            <div class="avatar">👨‍💻</div>
+            <h3>Lê Chí Hưng</h3>
+            <p class="role">Frontend Developer</p>
+            <span class="flip-hint">Hover để xem liên hệ ↺</span>
+          </div>
+          <div class="card-flip-back">
+            <h4>Thông tin liên hệ</h4>
+            <p>📧 hungcoder@example.com</p>
+            <p>🌐 github.com/hungcoder</p>
+            <p>📍 TP. Hồ Chí Minh</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- [Hiệu ứng 5: MODERN HAMBURGER MENU biến thành 'X' mượt mà & Đóng/Mở menu] -->
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-label="Mở/Đóng menu">
+        <div class="sidebar-header-row">
+          <h4>Menu</h4>
+          <label for="menu-toggle" class="hamburger-btn" title="Bấm để Mở/Đóng Menu">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+          </label>
+        </div>
+        <ul id="nav-list">
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#skills" class="active">Kỹ năng</a></li>
+          <li><a href="#services">Dịch vụ</a></li>
+          <li><a href="#projects">Dự án</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-info">
+        <h4>Thông tin</h4>
+        <p>📍 Sì Gòn, Việt Nam</p>
+        <p>💼 Sẵn sàng nhận dự án</p>
+      </div>
+    </aside>
+
+    <!-- Main Content bên phải chiếm phần còn lại -->
+    <main>
+      <section id="about" class="content-box">
+        <h2>Giới thiệu</h2>
+        <p class="about-desc">
+          Xin chào! Mình là Hưng, một lập trình viên đam mê công nghệ và sáng tạo. 
+          Mình chuyên sâu về phát triển Web hiện đại với HTML5, CSS3 (Flexbox, Grid) và JavaScript, 
+          luôn hướng tới việc xây dựng giao diện trực quan, chuẩn responsive và tối ưu trải nghiệm người dùng.
+        </p>
+      </section>
+
+      <!-- [Hiệu ứng 6: SKILL BAR ANIMATION - chạy từ 0% đến đích khi tải trang] -->
+      <section id="skills" class="content-box">
+        <h2>Kỹ năng (Skills)</h2>
+        <div class="skills">
+          <div class="skill">HTML5</div>
+          <div class="skill">CSS3</div>
+          <div class="skill">JavaScript (ES6+)</div>
+          <div class="skill">CSS Grid</div>
+          <div class="skill">Flexbox</div>
+          <div class="skill">React</div>
+          <div class="skill">Node.js</div>
+          <div class="skill">Git &amp; GitHub</div>
+          <div class="skill">Responsive Web Design</div>
+        </div>
+
+        <div class="skill-bars">
+          <div class="skill-bar-item">
+            <div class="skill-bar-header">
+              <span>HTML5</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill fill-html"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-header">
+              <span>CSS3 / Flexbox / Grid</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill fill-css"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-header">
+              <span>JavaScript (ES6+)</span>
+              <span>80%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill fill-js"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- [Hiệu ứng 4: PARALLAX IMAGE banner với background-attachment: fixed] -->
+      <section class="parallax-banner">
+        <div class="parallax-overlay">
+          <h3>Sáng tạo &amp; Tối ưu hóa</h3>
+          <p>Ảnh nền cuộn chậm hơn nội dung — sử dụng <code>background-attachment: fixed</code></p>
+        </div>
+      </section>
+
+      <!-- Khu vực Dịch vụ (Services) - Breakpoint Challenge (4 cột -> 2 cột -> 1 cột) -->
+      <section id="services" class="content-box">
+        <h2>Dịch vụ (Services)</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🎨</div>
+            <h3>Thiết kế UI/UX</h3>
+            <p>Thiết kế giao diện trực quan, hiện đại và chuẩn trải nghiệm người dùng.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">💻</div>
+            <h3>Lập trình Web</h3>
+            <p>Xây dựng web chuẩn Semantic HTML5, CSS3 hiện đại và JavaScript ES6+.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Tối ưu Responsive</h3>
+            <p>Tương thích mượt mà từ Desktop, iPad/Tablet đến điện thoại di động.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">⚡</div>
+            <h3>Tối ưu Hiệu năng</h3>
+            <p>Tối ưu tốc độ tải trang, nâng cao trải nghiệm và chuẩn hóa SEO web.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dự án tiêu biểu -->
+      <section id="projects" class="content-box">
+        <h2>Dự án tiêu biểu</h2>
+        <ul class="project-list">
+          <li>
+            <h3>Website bán hàng mini</h3>
+            <p>Xây dựng giao diện responsive với CSS Grid &amp; Flexbox, giỏ hàng tương tác bằng JavaScript.</p>
+          </li>
+          <li>
+            <h3>Ứng dụng quản lý công việc (To-Do App)</h3>
+            <p>Ứng dụng quản lý công việc cá nhân lưu trữ LocalStorage, hỗ trợ lọc và phân loại tác vụ.</p>
+          </li>
+          <li>
+            <h3>Blog chia sẻ kiến thức lập trình</h3>
+            <p>Trang chia sẻ kinh nghiệm học code, bài viết hướng dẫn CSS hiện đại và tối ưu hiệu năng web.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Liên hệ -->
+      <section id="contact" class="content-box">
+        <h2>Liên hệ</h2>
+        <p>Email: <a href="mailto:hungcoder@example.com">hungcoder@example.com</a></p>
+        <p>GitHub: <a href="https://github.com/hungcoder" target="_blank">github.com/hungcoder</a></p>
+      </section>
+    </main>
+
+    <!-- Footer dưới cùng chiếm toàn bộ chiều ngang -->
+    <footer>
+      <p>© 2026 Hưng - Coder | Xây dựng với CSS Grid &amp; Flexbox</p>
+    </footer>
+  </div>
+
+  <!-- [Hiệu ứng 1: FLOATING ACTION BUTTON cố định góc màn hình với pulse animation] -->
+  <a href="#contact" class="fab-contact" title="Liên hệ ngay" aria-label="Liên hệ">
+    <span class="fab-icon">💬</span>
+    <span class="fab-text">Liên hệ</span>
+  </a>
+
+  <!-- Script xử lý Chế độ Sáng/Tối & Tương tác Menu -->
+  <script>
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = themeBtn.querySelector('.theme-icon');
+    const themeText = themeBtn.querySelector('.theme-text');
+
+    // Kiểm tra cài đặt theme đã lưu trong LocalStorage
+    if (localStorage.getItem('portfolio-theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      themeIcon.textContent = '☀️';
+      themeText.textContent = 'Chế độ sáng';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      themeIcon.textContent = isDark ? '☀️' : '🌙';
+      themeText.textContent = isDark ? 'Chế độ sáng' : 'Chế độ tối';
+      localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
+    });
+
+    // Cập nhật trạng thái active khi click vào các mục menu
+    const navLinks = document.querySelectorAll('#nav-list a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
