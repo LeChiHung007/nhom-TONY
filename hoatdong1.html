@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vũ Thành Uy (03/09/2007) | Hoạt động 1: Micro-interactions Nút Bấm Cảm Xúc</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Link CSS Hoạt động 1 -->
+  <link rel="stylesheet" href="hoatdong1.css">
+</head>
+
+<body>
+
+  <!-- Background Cyber Ambient Glows -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Card trung tâm hiển thị Hoạt động 1 -->
+  <main class="demo-card">
+
+    <!-- Header & Thông tin sinh viên cá nhân hóa -->
+    <header class="demo-header">
+      <div class="student-badge">
+        <span class="badge-pulse"></span>
+        <span>Vũ Thành Uy • 03/09/2007 • Modern Neon Edition</span>
+      </div>
+
+      <h1>Hoạt Động 1: Nút Bấm Cảm Xúc</h1>
+      <p class="demo-subtitle">
+        Micro-interactions mượt mà kết hợp hiệu ứng hào quang Neon Cyberpunk trên nền tương phản sâu nổi bật.
+      </p>
+    </header>
+
+    <!-- Sân khấu nút bấm tương tác chính -->
+    <div class="button-stage">
+      <button type="button" class="btn-send" id="btnSend" aria-label="Gửi tin nhắn">
+        <span class="btn-glow-layer"></span>
+        <span class="btn-text">Gửi tin nhắn</span>
+        <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Phản hồi trạng thái tương tác trực tiếp khi người dùng click -->
+    <div class="click-feedback" id="clickFeedback">
+      <span class="feedback-dot"></span>
+      <span id="feedbackText">Hãy rê chuột và bấm thử nút bên trên để trải nghiệm phản hồi lực!</span>
+    </div>
+
+    <!-- Bảng phân tích 3 trạng thái Micro-interactions (Yêu cầu đề bài) -->
+    <div class="state-guides">
+      <!-- 1. Trạng thái Mặc định -->
+      <div class="state-item">
+        <div class="state-header">
+          <span class="state-dot dot-idle"></span>
+          <span class="state-badge">1. Mặc định (Idle)</span>
+        </div>
+        <p>Gradient ngọc lục bảo phát quang dịu nhẹ, bóng đổ tầng thấp, viền neon tinh xảo.</p>
+      </div>
+
+      <!-- 2. Trạng thái Rê chuột (Hover) -->
+      <div class="state-item">
+        <div class="state-header">
+          <span class="state-dot dot-hover"></span>
+          <span class="state-badge">2. Hover State</span>
+        </div>
+        <p>Nâng lên <code>-4px</code>, vệt sáng quét ngang (Shimmer Sweep), bung nở hào quang hổ phách.</p>
+      </div>
+
+      <!-- 3. Trạng thái Nhấn giữ (Active) -->
+      <div class="state-item">
+        <div class="state-header">
+          <span class="state-dot dot-active"></span>
+          <span class="state-badge">3. Click (Active)</span>
+        </div>
+        <p>Thu nhỏ <code>scale(0.96)</code> nén áp lực chân thật, màu đậm sâu, phản hồi 60 FPS.</p>
+      </div>
+    </div>
+
+    <!-- Thanh chuyển tiếp sang các Hoạt động 2, 3, 4 -->
+    <footer class="demo-footer">
+      <div class="author-info">
+        <span>Bài thực hành Buổi 05</span>
+        <span class="separator">•</span>
+        <span>Sinh viên: <strong>Vũ Thành Uy</strong></span>
+        <span class="separator">•</span>
+        <span>DOB: <strong>03/09/2007</strong></span>
+      </div>
+      <a href="hoatdong234.html" class="nav-switch-btn">
+        <span>Xem Hoạt động 2, 3 &amp; 4</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </a>
+    </footer>
+
+  </main>
+
+  <!-- Script phản hồi tương tác sinh động -->
+  <script>
+    const btnSend = document.getElementById('btnSend');
+    const feedbackText = document.getElementById('feedbackText');
+    let clickCount = 0;
+
+    btnSend.addEventListener('click', () => {
+      clickCount++;
+      btnSend.classList.add('is-clicked');
+      feedbackText.innerHTML = `✨ Đã kích hoạt <strong>Lực nhấn thứ ${clickCount}</strong>! Chuyển động mượt mà đạt chuẩn 60 FPS.`;
+
+      setTimeout(() => {
+        btnSend.classList.remove('is-clicked');
+      }, 350);
+    });
+  </script>
+
+</body>
+
+</html>
